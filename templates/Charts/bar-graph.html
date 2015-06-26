@@ -1,0 +1,14 @@
+
+<h2> BAR GRAPH </h2>
+<style>
+	#bar {
+		background: #fff;
+	}
+</style>
+	<div ng-controller="BarCtrl">
+		<canvas id="bar" class="chart chart-bar" data="data" labels="labels" 
+	    legend="true" series="series" click="onClick"></canvas> 
+	    <button ng-click="updateData()"> Update Data </button>
+    </div>
+
+</div> 

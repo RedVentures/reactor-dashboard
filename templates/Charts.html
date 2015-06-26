@@ -1,0 +1,20 @@
+
+<style>
+	#charts-container {
+		background: #fff;
+	}
+</style>
+
+<div ng-controller="chartController" id="charts-container">
+ 	<p>Select Chart Type </p>
+  <select ng-model="template" ng-change="setCurrentTemplat()" ng-options="t.name for t in chartTemplates">
+  <!--<input type="text" ng-model="template.url"> -->
+ 	 <option value=''>(Select)</option>
+  </select> <br>
+  	url of the template: <code>{{template.url}}</code>
+
+
+  <div>
+    <div ng-include="template.url"></div>
+  </div>
+</div>

@@ -1,0 +1,63 @@
+ <div class="container-fluid">
+    <h3>Home</h3>
+    <p>Under contrusction...</p> 
+  </div>
+
+
+
+		<!-- Tables -->
+<div class="row">
+	<div class="col-md-7" style="background-color:lavender;">
+		<div class="eventList">
+		  		<div class="eventList-header">Total Events List
+		  			<span ng-model="count">{{events.length}}</span>
+				  </div>
+				<div class="pull-center"><input type="text" class="form-control input-sm" ng-model="event_search"></div>
+			
+
+        <div class="flexible-table-container">
+          
+            <table id="main_table" class="table  table-hover JColResizer table-striped table-bordered dataTable no-footer" cellspacing="0" role="grid" aria-describedby="example_info" border="1" style="width:100%">
+              <div class="fixed-table-header" style="margin-right: 0px">
+                <thead>
+                   <tr role="row">
+                    <th class="sorting" tableindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Time Stamp: active to sort column ascencding" data-sortable="true">Time Stamp</th>
+                    <th class="sorting" tableindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Topic: active to sort column descendinz" aria-sort="ascending" data-sortable="true">Topic</th>
+                    <th class="sorting" tableindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Agent: active to sort column ascencding" data-sortable="true">Agent</th>
+                    <th class="sorting" tableindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="CompanyID: active to sort column ascencding" data-sortable="true">CompanyID</th>
+                    <th class="sorting" tableindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="UserID: active to sort column ascencding" data-sortable="true">UserID</th>
+                  </tr>
+                </thead>
+              </div>
+              <tbody>
+                <tr  ng-repeat="event in events | filter: event_search">
+                  <td class="text-center" style="background-color: PaleGreen;">{{event.meta.utc}}</td>
+                  <td class>{{event.meta.topic}}</td>
+                  <th class="sorting_1">{{event.meta.agent.username}}</th>
+                  <th class>{{event.reactorMeta.company}}</th>
+                  <th class>{{event.reactorMeta.userId}}</th>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+
+      <div class="row">
+        <div class="col-sm-5">
+          <div class="dataTables_info" id="example_info" role="status" arial-live="polite"> </div>
+        </div>
+        <div class="col-sm-7">
+          <div class="dataTables_paginate paging_simple_numbers" id="example_paginate">
+            <ul class="pagination">
+            </ul>
+          </div>
+        </div>
+      </div>  
+    </div>  
+  </div>
+</div> 
+
+<div class="col-md-4">
+
+</div>  <!-- END MAIN ROW -->
+
+

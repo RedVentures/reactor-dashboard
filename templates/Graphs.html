@@ -1,0 +1,22 @@
+ <div id="Graphs-wrapper">
+      <script type="text/javascript"></script> 
+
+	  <div class="container-fluid">
+	    <h3>Graphs</h3>
+	    <p>Under contrusction...</p> 
+	    <select>
+		  <option value="bar-graph"><a href="#/Graphs/Bar">Bar Graph</a></option>
+		  <option value="pie-graph"><a href="#/Graphs/Pie">Pie Chart</a></option>
+		</select>
+
+	  </div>
+
+
+
+	<div ng-controller="BarCtrl">
+		<canvas id="bar" class="chart chart-bar" data="data" labels="labels" 
+	    legend="true" series="series" click="onClick"></canvas> 
+	    <button ng-click="updateData()"> Update Data </button>
+    </div>
+
+</div> 
