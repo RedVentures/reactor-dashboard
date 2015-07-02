@@ -1,12 +1,17 @@
 var app = angular.module("reactorDashboardApp", [
 	'ngRoute', 
-	"chart.js",
+	'chart.js',
+	'amChartsDirective',
 //	'events.fields',
 	'events.events',
 	'charts.barData',
 	'charts.barGraph',
 	'charts.chartsApp',
-	'charts.pieChart'
+  'charts.graphsApp',
+	'charts.pieChart',
+  'charts.lineData',
+	'charts.lineChart',
+  'charts.lineChart2'
 	 ]);
 
 
@@ -30,31 +35,20 @@ app.config(['$routeProvider',
       });
   }]);
 
-
-// -----------------------------------------
-/*// --------- PRIMUS SERVER SEVICE ----------
-app.service('Primus', function () {
-	this.PrimusConnect = function () {
-		Primus.connect('http://localhost:9000');
-	};
- // primus  = Primus.connect('http://localhost:9000');
-
-});
-
-// ----------------------------------------- */
-
 // -------- CONNECTION TO SERVER ESTABLISHED USING PRIMUS -----------------
 //**
  	var primus  = Primus.connect('http://localhost:9000');
 //**
 //-------------------------------------------------------------------------
 
-app.controller('MainController', ['$scope', '$timeout','barData', 'Events',
-	function ($scope, $timeout, barData, Events) {
+app.controller('MainController', ['$scope', '$rootScope', '$timeout','barData', 'Events', 
+	function ($scope, $rootScope, $timeout, barData, Events) {
 
+  // HTML VARIABLES
 	$scope.count = 0;
-  	//var primus  = Primus.connect('http://localhost:9000');
-   	$scope.events = Events.getEvents();
+  $scope.events = Events.getEvents();
+  $scope.nmbrEvents = 5;
+  $scope.orderProp = Date;
 
    	var timer;
 
@@ -64,11 +58,13 @@ app.controller('MainController', ['$scope', '$timeout','barData', 'Events',
         //$scope.count ++;
         timer = $timeout( function() {
        		Events.addEvent(data);
+          Events.setCurrentEvent(data);
+          Events.updateTopics();
         	$scope.events = Events.getEvents();
- 			barData.updateData();
-       });
-        console.log('i have a message', data);
-        //console.log(data);
+ 			    barData.updateData();
+          $rootScope.$broadcast('graph-updated');
+        });
+        console.log('i have a message', data, data.meta.utc);
 
       });
     });
@@ -90,6 +86,28 @@ app.controller('MainController', ['$scope', '$timeout','barData', 'Events',
 
 // -------------------------------------------------------------
 
+
+
+
+
+
+
+
+
+
+//var primus  = Primus.connect('http://localhost:9000');
+
+// -----------------------------------------
+/*// --------- PRIMUS SERVER SEVICE ----------
+app.service('Primus', function () {
+  this.PrimusConnect = function () {
+    Primus.connect('http://localhost:9000');
+  };
+ // primus  = Primus.connect('http://localhost:9000');
+
+});
+
+// ----------------------------------------- */
 
 
 

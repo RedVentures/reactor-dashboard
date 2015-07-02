@@ -6,17 +6,28 @@
     <link rel="stylesheet" href="/bootstrap-table-examples/assets/bootstrap-table/src/bootstrap-table.css">
     <link rel="stylesheet" href="/bootstrap-table-examples/assets/examples.css">
 
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.js"></script>
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular-route.js"></script>
 
+    <!-- AmCharts Library references -->
+    <script type="text/javascript" src="bower_components/amcharts/dist/amcharts/amcharts.js"></script>
+    <script type="text/javascript" src="bower_components/amcharts/dist/amcharts/serial.js"></script>
+    <script type="text/javascript" src="bower_components/amcharts/dist/amcharts/amstock.js"></script
+    <!-- amChartsDirective -->
+    <script type="text/javascript" src="bower_components/amcharts-angular/dist/amChartsDirective.js"></script>
+
         <!-- Including all App Dependencies-->
+
     <script src="/app/events/events.js"></script>
-    
+    <script src="/app/Charts/lineData.js"></script>
     <script src="/app/Charts/barData.js"></script>
     <script src="/app/Charts/barGraph.js"></script>
     <script src="/app/Charts/pieChart.js"></script>
     <script src="/app/Charts/chartsApp.js"></script>
-    <script src="/app/Charts/timeData.js"></script>
+    <script src="/app/Charts/graphsApp.js"></script>
+  
+    <script src="/app/Charts/lineChart.js"></script>
+     <script src="/app/Charts/lineChart2.js"></script>
 
 
     <script src='/primus/primus.js'></script>
@@ -27,8 +38,7 @@
     <script type="/bower_components/bootstrap-table/src/bootstrap-table.js"></script>
 
 
-    <script type="text/javascript" src="/amcharts_3.14.5.free/amcharts/amcharts.js"></script>
-    <script type="text/javascript" src="amcharts/serial.js"></script>
+    
 
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script> <!-- jQuery library -->
 	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
@@ -40,23 +50,29 @@
 
     	/* PAGE BACKGROUND */
       body {
-    		background: rgb(135, 206, 235);
+    		background: #C0C0C0;
+        padding-top: 45px;
     	}
         /* Title */
       	.col-md-10 {
       		background: #fff;
       	}
-
         .main-head {
           background: #fff;
         }
         .reactor-logo {
           height: 50px;
           float: right;
+          background: #fff;
+        }
+        #page-wrapper {
+          padding-right: 210px;
+          padding-left:0px;
+          
         }
 
         .col-md-2 {
-          background: rgb(135, 206, 235);
+        
         }
         .subTitle{
           background: #fff;
@@ -73,15 +89,23 @@
   <body ng-controller="MainController">
  
    <!-- Title -->
-  	<div class="container-fluid main-head">
-      <div class="col-md-10">
-   	  	<h1> Dashboard Template</h1>
+  	<nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <a href='#/Home' class="navbar-brand">Dashboard Temaplate</a>
+        <button class="navbar-togle" id="reactor-button" data-toggle="collapse" data-target=".navHeaderCollapse"> 
+        <!--   <img class="reactor-logo" src="/img/reactor-logo.png"> -->
+        </button>
+
+        <div class="collapse navbar-collapse navHeaderCollapse">
+          <ul class="nav navbar-nav nav-bar-right">
+            <li><a href='#/Home' class= "navbar-brand">Home</a></li>
+            <li><a href='#/Graphs' class= "navbar-brand">Graphs</a></li>
+            <li><a href='#/Charts' class= "navbar-brand">Charts</a></li>
+          </ul>
+        </div>
+
       </div>
-      <div class="col-sm-2">
-        <img class="reactor-logo" src="/img/reactor-logo.png">
-      </div>
-        
-      </div>
+    </nav>
 
  	 	<p class="subTitle">Under contrusction...</p> 
 	</div>
