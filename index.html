@@ -12,7 +12,7 @@
     <!-- AmCharts Library references -->
     <script type="text/javascript" src="bower_components/amcharts/dist/amcharts/amcharts.js"></script>
     <script type="text/javascript" src="bower_components/amcharts/dist/amcharts/serial.js"></script>
-    <script type="text/javascript" src="bower_components/amcharts/dist/amcharts/amstock.js"></script
+    <script type="text/javascript" src="bower_components/amcharts/dist/amcharts/pie.js"></script>
     <!-- amChartsDirective -->
     <script type="text/javascript" src="bower_components/amcharts-angular/dist/amChartsDirective.js"></script>
 
@@ -27,7 +27,9 @@
     <script src="/app/Charts/graphsApp.js"></script>
   
     <script src="/app/Charts/lineChart.js"></script>
-     <script src="/app/Charts/lineChart2.js"></script>
+    <script src="/app/Charts/lineChart2.js"></script>
+    <script src="/app/Charts/pieChart2.js"></script>
+    <script src="/app/Charts/pieChart2Data.js"></script>
 
 
     <script src='/primus/primus.js'></script>
@@ -48,91 +50,88 @@
 
     <style>
 
-    	/* PAGE BACKGROUND */
+    	/* PAGE BACKGROUND background: #FF4747; */
       body {
-    		background: #C0C0C0;
-        padding-top: 45px;
+        background: #2B2B2B;
+        padding-top: 50px;
     	}
         /* Title */
       	.col-md-10 {
       		background: #fff;
       	}
+        #navbarTag {
+          padding-left: 200px;
+          padding-right: 200px;
+          background: #2B2B2B;
+        }
         .main-head {
           background: #fff;
         }
-        .reactor-logo {
+        .footerIMGS{
           height: 50px;
           float: right;
-          background: #fff;
         }
-        #page-wrapper {
-          padding-right: 210px;
-          padding-left:0px;
+        #borders {
+          padding-right: 200px;
+          padding-left: 200px;
           
-        }
-
-        .col-md-2 {
-        
         }
         .subTitle{
           background: #fff;
         }
-
-
-
+        .img-responsive{
+          max-width:50%;
+          max-height: 50%;
+        }
+        .btn-lg.round {
+           border-radius: 25px;
+        }
+        .navbar-fixed-bottom{
+          max-height: 20%;
+        }
     </style>
 
 
 
 
   </head>
-  <body ng-controller="MainController">
+  <body>
  
    <!-- Title -->
-  	<nav class="navbar navbar-default navbar-fixed-top">
+  	<nav id="navbarTag" class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
-        <a href='#/Home' class="navbar-brand">Dashboard Temaplate</a>
-        <button class="navbar-togle" id="reactor-button" data-toggle="collapse" data-target=".navHeaderCollapse"> 
-        <!--   <img class="reactor-logo" src="/img/reactor-logo.png"> -->
-        </button>
-
-        <div class="collapse navbar-collapse navHeaderCollapse">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse"> 
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href='#/Home' class="navbar-brand">Dashboard Temaplate</a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+<!--          <a href="" class="btn btn-default navbar-btn navbar-right"><img class="reactor-logo" src="/img/reactor-logo.png"></a> -->
           <ul class="nav navbar-nav nav-bar-right">
             <li><a href='#/Home' class= "navbar-brand">Home</a></li>
             <li><a href='#/Graphs' class= "navbar-brand">Graphs</a></li>
             <li><a href='#/Charts' class= "navbar-brand">Charts</a></li>
           </ul>
+          <a href="https://test-reactor-login.redventures.net/login/loginSelection"><img class="footerIMGS" src="/img/reactor-logo.png"></a>
+          <a href="https://www.redventures.com/"><img class="footerIMGS" src="/img/RV.png"></a>
         </div>
+      </div> <!-- End Container -->
+    </nav> <!-- End Navbar -->
 
-      </div>
-    </nav>
+  
+  <div class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+      <p class="navbar-text"> Site built by Jorge Diaz-Ortiz, Disrupt Summer Inter </p>
+    </div>
+  </div>
 
- 	 	<p class="subTitle">Under contrusction...</p> 
-	</div>
-
-  <div id="page-wrapper" class="open"> 	
+  <div id="page-wrapper" class="open" ng-controller="MainController"> 	
 	<!-- MAIN ROW -->
-		<div class="col-md-2" >
-		  <h3>Dropdowns</h3>
-		  <p>Which Events Page do you want to go?</p>
-		  <div class="dropdown">
-		    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Events
-		    <span class="caret"></span></button>
-		    <ul class="dropdown-menu">
-		      <li><a href="#/Home">Home></a></li>
-		      <li class="divider"></li>
-		      <li><a href="#/Graphs">Graphs</a></li>
-		      <li><a href="#/Charts">Charts</a></li>
-		    </ul>
-		  </div>
-		  <div class="sidebar-footer col-xs-12"> 2015 Red Ventures</div>
-		</div>
-
-		<div class="col-md-10">
-			<ng-view></ng-view>
-		</div>
-	
-
+      <ng-view></ng-view> 
   </div><!-- End Page Wrapper -->
   </body>
 </html>

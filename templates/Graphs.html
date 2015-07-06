@@ -1,53 +1,133 @@
- <div id="Graphs-wrapper" ng-controller="graphsCrlt">
+<style>
+   #borders {
+      padding-right: 200px;    
+      padding-left: 200px;
+    }  
+     #page-container {
+      box-shadow: 0 0 5px black;
+      padding:15px 15px 0 15px;
+      background-color: #fff;
+      min-height: 1000px;
+     }
+     #barModal {
+     	position: fixed; top:10%; left:10%; right: 10%; bottom:10%;
+     }
+     #modal-exit{
+          float: right;
+        }
+</style>
 
-	  <div class="container-fluid">
-	    <h3>Graphs</h3>
-	    <p>Under contrusction...</p> 
-	    <select>
-		  <option value="bar-graph"><a href="#/Graphs/Bar">Bar Graph</a></option>
-		  <option value="pie-graph"><a href="#/Graphs/Pie">Pie Chart</a></option>
-		</select>
-
-	  </div>
+<div ng-controller="graphsCrlt"> <!-- PAGE WRAP -->
 
 
-	<div class="row">
-		<div class="row table-head" style="width:100%; padding:5px;">
-			<div class="col-sm-6 table-title" style="color: blue; font-size: 120%; text-transform: uppercase">Bar Graph</div>
-			<button ng-show="!barToggle" ng-click="changeBarToggle()">Hide</button>
-			<button ng-show="barToggle" ng-click="changeBarToggle()">Show</button>
+ <div class="jumbotron">
+  <div class="container text-center">
+    <h1>Graphs <span class="glyphicon glyphicon-signal" aria-hidden="true"></span></h1>
+    <p>Under contrusction...</p> 
+    <div class="btn-group">
+      <a href="" class="btn btn-lg btn-primary" ng-click="changeBarToggle()"><span class="glyphicon glyphicon-signal" aria-hidden="true"></span> Bar Graph</a>
+      <a href="" class="btn btn-lg btn-info" ng-click="changePieToggle()"> <span class="glyphicon glyphicon-signal" aria-hidden="true"></span> Pie Chart</a>
+      <a href="" class="btn btn-lg btn-success" ng-click="changeLineToggle()"><span class="glyphicon glyphicon-signal" aria-hidden="true"></span> Line Chart</a>
+    </div>
+  </div>
+</div>
+
+
+ <div id="borders">
+ <div id="page-container">
+
+ 	<div class="row">
+ 		<div class="col-lg-6">
+			<div id="barG" class="panel panel-primary">
+				<div  class="panel panel-head" style="width:100%; padding:5px;">
+					<div style="color: blue; font-size: 120%; text-transform: uppercase">Bar Graph 
+						<a class="btn btn-xs btn-primary" ng-show="!barToggle" ng-click="changeBarToggle()">Hide <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></a>
+						<a class="btn btn-xs btn-primary" ng-show="barToggle" ng-click="changeBarToggle()">Show <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a>
+						<a class="btn btn-xs btn-primary" href="#/Graphs/#barModal" data-toggle="modal"><span class="glyphicon glyphicon-fullscreen" aria-hidden="true"> </a>
+					</div>
+					
+				</div>
+				<div class="panel-body" ng-show="!barToggle" ng-controller="BarCtrl">
+					<canvas id="bar" class="chart chart-bar" data="data" labels="labels" 
+				    legend="true" series="series" click="onClick"></canvas> 
+				    <button ng-click="updateData()"> Update Data </button>
+			    </div>
+			</div>
 		</div>
-		<div ng-show="!barToggle" ng-controller="BarCtrl">
-			<canvas id="bar" class="chart chart-bar" data="data" labels="labels" 
-		    legend="true" series="series" click="onClick"></canvas> 
-		    <button ng-click="updateData()"> Update Data </button>
-	    </div>
+
+		<div class="col-lg-6">
+		    <div id="pieC" class="panel panel-info">
+		    	<div  class="panel panel-head" style="width:100%; padding:5px;">
+					<div style="color: blue; font-size: 120%; text-transform: uppercase">Pie Chart 
+						<a class="btn btn-xs btn-info" ng-show="!pieToggle" ng-click="changePieToggle()">Hide <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></a>
+						<a class="btn btn-xs btn-info" ng-show="pieToggle" ng-click="changePieToggle()">Show <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></a>
+						<a class="btn btn-xs btn-primary" href="#/Graphs/#pieModal" data-toggle="modal"><span class="glyphicon glyphicon-fullscreen" aria-hidden="true"> </a> 
+					</div>
+					
+				</div>
+				<div class="panel-body" ng-show="!pieToggle" ng-controller="PieCtrl">
+					<canvas id="pie" class="chart chart-pie" data="data" labels="labels" legend="true"></canvas> 
+				    <button ng-click="updateData()"> Update Data </button>
+			    </div>
+			</div>
+		</div>
+
 	</div>
 
-
-    <div class="row">
-    	<div class="row table-head" style="width:100%; padding:5px;">
-			<div class="col-sm-6 table-title" style="color: blue; font-size: 120%; text-transform: uppercase">Pie Chart</div>
-			<button ng-show="!pieToggle" ng-click="changePieToggle()">Hide</button>
-			<button ng-show="pieToggle" ng-click="changePieToggle()">Show</button>
-		</div>
-		<div ng-show="!pieToggle" ng-controller="PieCtrl">
-			<canvas id="pie" class="chart chart-pie" data="data" labels="labels" 
-			legend="true"></canvas> 
-		    <button ng-click="updateData()"> Update Data </button>
-	    </div>
-	</div>
-
-    <div class="row">
-    	<div class="row table-head" style="width:100%; padding:5px;">
-			<div class="col-sm-6 table-title" style="color: blue; font-size: 120%; text-transform: uppercase">Line Chart</div>
-			<button ng-show="!lineToggle" ng-click="changeLineToggle()">Hide</button>
-			<button ng-show="lineToggle" ng-click="changeLineToggle()">Show</button>
+    <div id="lineC" class="panel panel-success">
+    	<div class="panel panel-head" style="width:100%; padding:5px;">
+			<div style="color: blue; font-size: 120%; text-transform: uppercase">Line Chart 
+				<a class="btn btn-xs btn-success" ng-show="!lineToggle" ng-click="changeLineToggle()">Hide <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></a>
+				<a class="btn btn-xs btn-success" ng-show="lineToggle" ng-click="changeLineToggle()">Show <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a>
+				<a class="btn btn-xs btn-primary" href="#/Graphs/#lineModal" data-toggle="modal"><span class="glyphicon glyphicon-fullscreen" aria-hidden="true"> </a>
+			</div>
+			
 		</div>
 		<div ng-show="!lineToggle">
 			<div ng-controller="LineCtrl2">
 				<div id="chartdiv" style="width: 640px; height: 400px;"></div>
 		    </div>
-
 	    </div>
 	</div>
+</div>
+</div>
+
+<!-- MODALS -->
+
+<div class="modal fade" id="barModal" role="dialog">
+	<div class="modal-content">
+		<div class="modal-header" style="color: blue; font-size: 120%; text-transform: uppercase">Bar Graph
+		<a id="modal-exit" class="btn btn-md btn-primary" data-dismiss="modal"> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+		</div>
+		<div class="modal-body" ng-controller="BarCtrl">
+			<canvas id="bar" class="chart chart-bar" data="data" labels="labels" legend="true" series="series" click="onClick"></canvas> 
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="pieModal" role="dialog">
+	<div class="modal-content">
+		<div class="modal-header" style="color: blue; font-size: 120%; text-transform: uppercase">Pie Chart
+		<a id="modal-exit" class="btn btn-md btn-primary" data-dismiss="modal"> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+		</div>
+		<div class="modal-body" ng-controller="PieCtrl">
+			<canvas id="pie" class="chart chart-pie" data="data" labels="labels" legend="true"></canvas> 
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="lineModal" role="dialog">
+	<div class="modal-content">
+		<div class="modal-header" style="color: blue; font-size: 120%; text-transform: uppercase">Line Chart
+		<a id="modal-exit" class="btn btn-md btn-primary" data-dismiss="modal"> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+		</div>
+		<div class="modal-body" ng-controller="LineCtrl2">
+			<div id="chartdiv" style="width: 640px; height: 400px;"></div>
+		</div>
+	</div>
+</div>
+
+</div>
+
+
+

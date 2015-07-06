@@ -27,7 +27,7 @@ angular.module( 'charts.barData', [
 			topicsCounts.push(topic.count);
 		});
 		self = topicsCounts;
-		console.log(topicsCounts);
+		//console.log(topicsCounts);
 	};
 
 

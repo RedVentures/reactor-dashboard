@@ -10,8 +10,8 @@ var app = express ();
 
 // Setting up Server that Loads the index.html page
 app.use (express.static (__dirname));
-var server = app.listen(9000, function () {
-	console.log('express listening port 9000');
+var server = app.listen(12000, function () {
+	console.log('express listening port 12000');
 	console.log('host name', process.env.HOSTNAME);
 });
 

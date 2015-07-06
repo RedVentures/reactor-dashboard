@@ -1,11 +1,19 @@
-
 <style>
-	#charts-container {
-		background: #fff;
-	}
+   #borders {
+      padding-right: 200px;    
+      padding-left: 200px;
+    }
+    .row
+    {
+      background: #fff;
+    }
+    .col-md-6 {
+      height: 500px;
+    }
 </style>
 
-<div ng-controller="chartController" id="charts-container">
+
+<div ng-controller="chartController" id="borders">
  	<p>Select Chart Type </p>
   <select ng-model="template" ng-change="setCurrentTemplate()" ng-options="t.name for t in chartTemplates">
   <!--<input type="text" ng-model="template.url"> -->
@@ -14,7 +22,10 @@
   	url of the template: <code>{{template.url}}</code>
 
 
-  <div>
-    <div ng-include='template.url'></div>
+  <div id="container">
+    <div class= "row">
+      <div clas="col-md-6" ng-include='template.url'>
+      </div>
+    </div>
   </div>
 </div>

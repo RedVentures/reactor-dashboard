@@ -21,7 +21,7 @@ angular.module( 'charts.lineData', [
                 lineDataArr.push(lineData[index]);
             }
         }
-        console.log(lineDataArr);
+        //console.log(lineDataArr);
 		return lineDataArr;
 	};
 
@@ -42,11 +42,11 @@ angular.module( 'charts.lineData', [
                 lineData[date].date = date;
         }
         //console.log('event came in ' + eventTopic +' lineData updated' + time);  
-        console.log(lineData);      
+        //console.log(lineData);      
     };
 
     self.getGraphs = function () {
-        //console.log(graphsArr);
+        console.log(graphsArr);
         return graphsArr;
     };
 
@@ -72,7 +72,7 @@ angular.module( 'charts.lineData', [
         if (!lineData[date]){
             lineData[date] = {date: date};
         }
-        console.log(loadedTopics);
+        //console.log(loadedTopics);
         angular.forEach(loadedTopics, function(eventTopic){
             lineData[date][eventTopic] = 0;
         });

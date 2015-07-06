@@ -1,15 +1,15 @@
 angular.module('charts.graphsApp', [])
 	.controller ('graphsCrlt', [ '$scope', function ($scope) {
 		
-		$scope.barToggle = false;
+		$scope.barToggle = true;
 		$scope.changeBarToggle = function () {
 			$scope.barToggle = !($scope.barToggle);
 		};
-		$scope.pieToggle = false;
+		$scope.pieToggle = true;
 		$scope.changePieToggle = function () {
 			$scope.pieToggle = !($scope.pieToggle);
 		};
-		$scope.lineToggle = false;
+		$scope.lineToggle = true;
 		$scope.changeLineToggle = function () {
 			$scope.lineToggle = !($scope.lineToggle);
 		};

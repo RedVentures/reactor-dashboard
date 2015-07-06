@@ -11,7 +11,9 @@ var app = angular.module("reactorDashboardApp", [
 	'charts.pieChart',
   'charts.lineData',
 	'charts.lineChart',
-  'charts.lineChart2'
+  'charts.lineChart2',
+  'charts.pieChart2',
+  'charts.pieChart2Data'
 	 ]);
 
 
@@ -37,7 +39,7 @@ app.config(['$routeProvider',
 
 // -------- CONNECTION TO SERVER ESTABLISHED USING PRIMUS -----------------
 //**
- 	var primus  = Primus.connect('http://localhost:9000');
+ 	var primus  = Primus.connect('http://localhost:12000');
 //**
 //-------------------------------------------------------------------------
 
@@ -47,11 +49,43 @@ app.controller('MainController', ['$scope', '$rootScope', '$timeout','barData', 
   // HTML VARIABLES
 	$scope.count = 0;
   $scope.events = Events.getEvents();
-  $scope.nmbrEvents = 5;
+  $scope.nmbrEvents = 1000;
   $scope.orderProp = Date;
+    
 
-   	var timer;
 
+
+    $scope.searchToogle = true;
+    $scope.changeSearchToggle = function () {
+      $scope.searchToogle = !($scope.searchToogle);
+    };
+    $scope.filterToogle = true;
+    $scope.changeFilterToggle = function () {
+      $scope.filterToogle = !($scope.filterToogle);
+    };
+    $scope.viewToogle = true;
+    $scope.changeViewToggle = function () {
+      $scope.viewToogle = !($scope.viewToogle);
+    };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   var timer;
    primus.on('open', function () {
       console.log('i have connected');
       primus.on('data', function (data) { // triggers when you have an event
@@ -80,7 +114,7 @@ app.controller('MainController', ['$scope', '$rootScope', '$timeout','barData', 
         $scope.events = Events.getEvents();
 		$scope.event = {};
 	});
-   };
+};
 
 }]);
 

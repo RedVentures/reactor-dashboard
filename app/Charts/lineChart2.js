@@ -9,9 +9,10 @@ angular.module( 'charts.lineChart2', [
 		
 		var lineDataArr = lineData.getData();
 		var graphsArr = lineData.getGraphs();
-			
+		//console.log('12');
 
-		chart = new AmCharts.makeChart("chartdiv", {
+
+		var chart = new AmCharts.makeChart("chartdiv", {
 			type: "serial",
 		    dataProvider: lineDataArr,
 		    pathToImages: "http://www.amcharts.com/lib/images/",
@@ -43,7 +44,7 @@ angular.module( 'charts.lineChart2', [
              }],
             chartScrollbar: {
                     autoGridCount: true,
-                    graph: "g1",
+                    graph: "g",
                     scrollbarHeight: 40,
                     color: "#FFFFFF",
                     dragIcon: "dragIconRoundSmallBlack"
@@ -52,7 +53,7 @@ angular.module( 'charts.lineChart2', [
             chartCursor: {
             	cursorPosition: "mouse"
             },
-            graphs: graphsArr
+            graphs:[]
 		});
 		chart.validateData();
 
@@ -65,40 +66,16 @@ angular.module( 'charts.lineChart2', [
         	//console.log(newColor);
 
 			if (!(loadedTopics[eventTopic])) {
-
 				lineData.updateLoadedTopics(eventTopic);
 				lineData.updateGraphs(eventTopic);
-
-			/*	var g = new AmCharts.AmGraph(eventTopic, {
-                   	bullet: "round",
-                   	title: eventTopic,
-                   	valueField: eventTopic,
-                   	fillColors: newColor,
-                  	//fillAlphas: 0,
-                  	//lineThickness: 2,
-                  	balloonText: "[[title]] in [[category]]:<b>[[value]]</b>"
-				});
-			*/	
-			//
-			/*
-				var g = new AmCharts.AmGraph();
-				g.id = eventTopic;
-				g.bullet = "round";
-				g.title = eventTopic;
-				g.valueField = eventTopic;
-				//g.fillColors(newColor);
-				//g.fillAlphas(0);
-				//g.lineThickness(2);
-				//g.balloonText("[[title]] in [[category]]:<b>[[value]]</b>");
-				chart.addGraph(g);
-			*/
-			//
 			}
 
 			lineData.updateData();
 			chart.graphs = lineData.getGraphs();
 			chart.dataProvider = lineData.getData();
+			
 			chart.validateData();
+			//chart.animateAgain();
 		});
 
 	}]);

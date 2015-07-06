@@ -3,8 +3,19 @@
 	#bar {
 		background: #fff;
 	}
+	.responsive-container {
+		position: relative;
+   		padding-bottom: 60%;
+	}
+	.responsive-container > div {
+	   position: absolute;
+	   top: 0;
+	   right: 0;
+	   bottom: 0;
+	   left: 0;
+	}
 </style>
-	<div ng-controller="LineCtrl">
-		<div id="chartdiv" style="width: 640px; height: 400px;">
+	<div class="responsive-container" ng-con troller="LineCtrl">
+		<div id="chartdiv">
 		</div>
     </div>
