@@ -1,31 +1,139 @@
 <style>
-   #borders {
-      padding-right: 200px;    
-      padding-left: 200px;
-    }
-    .row
-    {
-      background: #fff;
-    }
-    .col-md-6 {
-      height: 500px;
-    }
+  #main-wrapper {
+    padding-right: 10%;
+      padding-left: 10%;
+  }
+     #page-container {
+      box-shadow: 0px -.5px .5px black;
+      padding:15px 15px 15px 15px;
+      background-color: #fff;
+      min-height: 1000px;
+     }
+     #barModal {
+      position: fixed; top:10%; left:10%; right: 10%; bottom:10%;
+     }
+     #modal-exit{
+          float: right;
+        }
+     .jumbotron {
+      margin-bottom: 0px;
+     }
 </style>
 
-
-<div ng-controller="chartController" id="borders">
- 	<p>Select Chart Type </p>
-  <select ng-model="template" ng-change="setCurrentTemplate()" ng-options="t.name for t in chartTemplates">
-  <!--<input type="text" ng-model="template.url"> -->
- 	 <option value=''>(Select)</option>
-  </select> <br>
-  	url of the template: <code>{{template.url}}</code>
+<div id="main-wrapper" ng-controller="chartsCtrl"> <!-- PAGE WRAP -->
 
 
-  <div id="container">
-    <div class= "row">
-      <div clas="col-md-6" ng-include='template.url'>
+   <div class="jumbotron">
+    <div class="container text-center">
+      <h1>Charts <span class="glyphicon glyphicon-signal" aria-hidden="true"></span></h1>
+      <p>Under contrusction...</p> 
+      <div class="btn-group">
+        <a href="" class="btn btn-lg btn-danger" ng-click="changeBarToggle()"><span class="glyphicon glyphicon-signal" aria-hidden="true"></span> Bar Graph</a>
+        <a href="" class="btn btn-lg btn-default" ng-click="changePieToggle()"> <span class="glyphicon glyphicon-signal" aria-hidden="true"></span> Pie Chart</a>
+        <a href="" class="btn btn-lg btn-danger" ng-click="changeLineToggle()"><span class="glyphicon glyphicon-signal" aria-hidden="true"></span> Line Chart</a>
+      </div>
+    </div>
+   </div>
+
+
+  <div id="page-container">
+
+  <div class="row">
+    <div class="col-lg-6">
+      <div id="barG" class="panel panel-danger">
+        <div  class="panel panel-head" style="width:100%; padding:5px;">
+          <div style="color: red; font-size: 120%; text-transform: uppercase">Bar Graph 
+            <a class="btn btn-xs btn-danger" ng-show="!barToggle" ng-click="changeBarToggle()">Hide <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></a>
+            <a class="btn btn-xs btn-danger" ng-show="barToggle" ng-click="changeBarToggle()">Show <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a>
+            <a class="btn btn-xs btn-default" ng-click="refreshBarData()"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></a>
+            <a class="btn btn-xs btn-danger" data-toggle="modal" data-target="#barModal"><span class="glyphicon glyphicon-fullscreen" aria-hidden="true"> </a>
+          </div>
+          
+        </div>
+        <div class="panel-body" ng-show="!barToggle">
+          <div style="height:500px" id="barchartdiv"></div> 
+          </div>
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div id="pieC" class="panel panel-danger">
+          <div  class="panel panel-head" style="width:100%; padding:5px;">
+          <div style="color: red; font-size: 120%; text-transform: uppercase">Pie Chart 
+            <a class="btn btn-xs btn-danger" ng-show="!pieToggle" ng-click="changePieToggle()">Hide <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></a>
+            <a class="btn btn-xs btn-danger" ng-show="pieToggle" ng-click="changePieToggle()">Show <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a>
+            <a class="btn btn-xs btn-default" ng-click="refreshPieData()"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></a>
+            <a class="btn btn-xs btn-danger" data-toggle="modal" data-target="#pieModal"><span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span></a> 
+          </div>
+          
+        </div>
+        <div class="panel-body" ng-show="!pieToggle">
+          <div style="height:500px" id="SQLpiechartdiv"></div> 
+          </div>
+        <!--
+        <div class="panel-body" ng-show="!pieToggle" ng-controller="PieCtrl">
+          <canvas id="pie" class="chart chart-pie" data="data" labels="labels" legend="true"></canvas> 
+            <button ng-click="updateData()"> Update Data </button>
+          </div>
+          -->
+      </div>
+    </div>
+
+  </div>
+
+    <div id="lineC" class="panel panel-danger">
+      <div class="panel panel-head" style="width:100%; padding:5px;">
+      <div style="color: red; font-size: 120%; text-transform: uppercase">Line Chart 
+        <a class="btn btn-xs btn-danger" ng-show="!lineToggle" ng-click="changeLineToggle()">Hide <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></a>
+        <a class="btn btn-xs btn-danger" ng-show="lineToggle" ng-click="changeLineToggle()">Show <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a>
+        <a class="btn btn-xs btn-default" ng-click="refreshLineData()"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></a>
+        <a class="btn btn-xs btn-danger" data-toggle="modal" data-target="#lineModal"><span class="glyphicon glyphicon-fullscreen" aria-hidden="true"> </a>
+      </div>
+      
+    </div>
+    <div ng-show="!lineToggle">
+      <div>
+        <div id="chartdiv" style="min-height: 500px;"></div>
+        </div>
+      </div>
+  </div>
+
+  </div>
+
+
+<!-- MODALS -->
+
+  <div class="modal fade" id="barModal" role="dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="color: blue; font-size: 120%; text-transform: uppercase">Bar Graph
+      <a id="modal-exit" class="btn btn-md btn-danger" data-dismiss="modal"> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+      </div>
+      <div class="modal-body">
+        <div style="height:500px" id="barchartdiv"></div>
       </div>
     </div>
   </div>
+
+  <div class="modal fade" id="pieModal" role="dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="color: blue; font-size: 120%; text-transform: uppercase">Pie Chart
+      <a id="modal-exit" class="btn btn-md btn-danger" data-dismiss="modal"> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+      </div>tr
+      <div class="modal-body">
+        <div style="height:500px" id="piechartdiv"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="lineModal" role="dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="color: blue; font-size: 120%; text-transform: uppercase">Line Chart
+      <a id="modal-exit" class="btn btn-md btn-damger" data-dismiss="modal"> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+      </div>
+      <div class="modal-body">
+        <div id="chartdiv"></div>
+      </div>
+    </div>
+  </div>
+
 </div>

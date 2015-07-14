@@ -1,17 +1,14 @@
 <style>
-  select {
-    height:30px;
-    width: 100px;
-    font-size:14px;
+  #main-wrapper {
+    padding-right: 10%;
+    padding-left: 10%;
   }
-   #borders {
-      padding-right: 200px;    
-      padding-left: 200px;
-
-    }  
-   #page-container {
-      box-shadow: 0 0 5px black;
-      padding:0 15px 0 15px;
+  .row {
+    margin-right: 0;
+    margin-left: 0;
+  }
+   #shadow {
+      box-shadow: 0px -.5px .5px black;
       background-color: #fff;
       min-height: 1000px;
 
@@ -23,8 +20,12 @@
    #table-navbar {
       padding: 10px;
    }
+  .jumbotron {
+      margin-bottom: 0px;
+     }
 </style>
 
+<div id="main-wrapper" >
 
  <div class="jumbotron">
   <div class="container text-center">
@@ -40,9 +41,9 @@
 
 
 		<!-- Tables -->
-<div id="borders" class="row">
+<div class="row">
 
-	<div id="page-container" class="container-fluid">
+	<div id="shadow" class="container-fluid">
 
 		<div class="eventList">
 
@@ -105,5 +106,6 @@
     </div>  
   </div>
 </div> 
+</div>
 
 

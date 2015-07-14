@@ -1,23 +1,30 @@
-angular.module( 'charts.pieChart2Data', [
-	'events.events'
+angular.module( 'charts.chartsSrvc', [
+	'SQLData.sqlSrvc'
 	])
 
-  .factory('pieChart2Data', ['Events', '$rootScope', function (Events, $rootScope) {
+  .factory('chartsSrvc', ['sqlEvents', '$rootScope', function (sqlEvents, $rootScope) {
 	
     var self = [];
     var pieData = {};
     var pieDataArr = [];
 
 
-    self.updateChart = function(){
-        pieDataArr = [];
-        for (var index in pieData){
-            if (pieData.hasOwnProperty(index)){
-                pieDataArr.push(pieData[index]);
-            }
+
+    self.loadStoredData = function () {
+      var events = sqlEvents.events;
+      angular.forEach (events || [], function (event) {
+        eventTopic = event.Topic;
+        if (pieData[eventTopic]) {
+            pieData[eventTopic].value ++ ;
+        } else {
+            pieData[eventTopic] = {};
+            pieData[eventTopic].value = 1;
+            pieData[eventTopic].label = eventTopic;
         }
-        chart.validateData();
+      });
+      console.log(pieData);
     };
+
 
     self.getData = function () {
         pieDataArr = [];
@@ -30,9 +37,9 @@ angular.module( 'charts.pieChart2Data', [
 	};
 
     self.updateData = function () {
-	    var currEvent = Events.getCurrentEvent();
-        var eventTopic = Events.getTopic(currEvent);
-        var newColor = '#'+Math.floor(Math.random()*16777215).toString(16);
+	      var currEvent = sqlEvents.getCurrentEvent();
+        var eventTopic = currEvent.Topic;
+        //var newColor = '#'+Math.floor(Math.random()*16777215).toString(16);
         if (pieData[eventTopic]) {
             pieData[eventTopic].value ++ ;
         } else {
@@ -47,7 +54,7 @@ angular.module( 'charts.pieChart2Data', [
         return pieChart;
     };
 
-    pieChart = new AmCharts.makeChart( "piechartdiv", {
+    pieChart = new AmCharts.makeChart( "SQLpiechartdiv", {
         type: "pie",
         theme: "light",
         "startDuration": 0,
@@ -98,73 +105,6 @@ angular.module( 'charts.pieChart2Data', [
     });
     pieChart.validateData();
     pieChart.invalidateSize();
-
-    self.getBarChart = function () {
-        return barChart;
-    };
-
-    barChart = new AmCharts.makeChart( "barchartdiv", {
-      "type": "serial",
-      "theme": "light",
-      rotate: false,
-      "dataProvider": pieDataArr,
-      "valueAxes": [ {
-        "title": "Count",
-        "gridColor": "#FFFFFF",
-        "gridAlpha": 0.2,
-        "dashLength": 0
-      } ],
-      "gridAboveGraphs": true,
-      "startDuration": 1,
-      "graphs": [ {
-        "balloonText": "[[category]]: <b>[[value]]</b>",
-        "fillAlphas": 0.8,
-        "lineAlpha": 0.2,
-        "type": "column",
-        "valueField": "value"
-       // "fillColors": ["#FF0F00", "#FF6600", "#FF9E01", "#FCD202", 
-         //            "#F8FF01", "#B0DE09", "#04D215", "#0D8ECF", 
-           //          "#0D52D1", "#2A0CD0", "#8A0CCF", "#CD0D74"]
-      } ],
-      "chartCursor": {
-        "categoryBalloonEnabled": false,
-        "cursorAlpha": 0,
-        "zoomable": false
-      },
-      "categoryField": "label",
-      "categoryAxis": {
-        "title": "Event Type",
-        "gridPosition": "start",
-        "gridAlpha": 0,
-        "tickPosition": "start",
-        "tickLength": 20,
-        "labelRotation": 45
-      },
-      "export": {
-        "enabled": true
-      }
-
-    });
-    barChart.invalidateSize();
-    barChart.validateData();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

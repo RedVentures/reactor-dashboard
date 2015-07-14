@@ -1,0 +1,1400 @@
+<!DOCTYPE html>
+<!-- saved from url=(0035)http://jsfiddle.net/amcharts/mZ2Gq/ -->
+<html slick-uniqueid="3"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="description" content="Test your JavaScript, CSS, HTML or CoffeeScript online with JSFiddle code editor.">
+    <meta name="keywords" content="online javascript editor, testing javascript online, online ide, online code editor, html, css, coffeescript, scss online editor">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <meta name="author" content="JSFiddle">
+    <meta name="copyright" content="share alike">
+
+    
+
+    <meta name="google-site-verification" content="9m4aWTtDLfQ1kJNm3NtNsCrtpsOx_QoOPQRJ7jAwup8">
+    <script type="text/javascript" async="" src="./Edit fiddle - JSFiddle_files/wafdmsew"></script><script id="twitter-wjs" src="./Edit fiddle - JSFiddle_files/widgets.js"></script><script async="" src="./Edit fiddle - JSFiddle_files/prum.min.js"></script><script type="text/javascript" async="" src="./Edit fiddle - JSFiddle_files/ga.js"></script><script type="text/javascript" src="./Edit fiddle - JSFiddle_files/moo-clientcide-1.3.js"></script>
+<script type="text/javascript" src="./Edit fiddle - JSFiddle_files/codemirror.js"></script>
+<script type="text/javascript" src="./Edit fiddle - JSFiddle_files/javascript.js"></script>
+<script type="text/javascript" src="./Edit fiddle - JSFiddle_files/css.js"></script>
+<script type="text/javascript" src="./Edit fiddle - JSFiddle_files/xml.js"></script>
+<script type="text/javascript" src="./Edit fiddle - JSFiddle_files/htmlmixed.js"></script>
+<script type="text/javascript" src="./Edit fiddle - JSFiddle_files/coffeescript.js"></script>
+<script type="text/javascript" src="./Edit fiddle - JSFiddle_files/searchcursor.js"></script>
+<script type="text/javascript" src="./Edit fiddle - JSFiddle_files/matchbrackets.js"></script>
+<script type="text/javascript" src="./Edit fiddle - JSFiddle_files/jshint.js"></script>
+<script type="text/javascript" src="./Edit fiddle - JSFiddle_files/emmet.js"></script>
+<script type="text/javascript" src="./Edit fiddle - JSFiddle_files/Sidebar.js"></script>
+<script type="text/javascript" src="./Edit fiddle - JSFiddle_files/LayoutCM.js"></script>
+<script type="text/javascript" src="./Edit fiddle - JSFiddle_files/Actions.js"></script>
+<script type="text/javascript" src="./Edit fiddle - JSFiddle_files/Resources.js"></script>
+<script type="text/javascript" src="./Edit fiddle - JSFiddle_files/EditorCM.js"></script>
+<script type="text/javascript" src="./Edit fiddle - JSFiddle_files/Settings.js"></script>
+<script type="text/javascript" src="./Edit fiddle - JSFiddle_files/heyoffline.js"></script>
+
+    <!-- script src="/mooshellmedia/js/clientcide.2.2.0.js" type="text/javascript" charset="utf-8"></script -->
+
+
+<script type="text/javascript" charset="utf-8">
+
+	// switch this to false once on production
+	var disqus_developer = false;
+
+	// uniqie shell ID
+	var disqus_identifier = 'mZ2Gq';
+
+	// title
+	var disqus_title = '';
+
+</script>
+
+<!--meta name="viewport" content="width=device-width, maximum-scale=0.5" /-->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-touch-fullscreen" content="yes">
+
+    
+    <link rel="stylesheet" type="text/css" href="./Edit fiddle - JSFiddle_files/normalize.css">
+
+    <link rel="stylesheet" type="text/css" href="./Edit fiddle - JSFiddle_files/tricks.css">
+
+    <link rel="stylesheet" type="text/css" href="./Edit fiddle - JSFiddle_files/elusive-webfont.css">
+
+    <link rel="stylesheet" type="text/css" href="./Edit fiddle - JSFiddle_files/codemirror.css">
+    <link rel="icon" href="http://jsfiddle.net/favicon.png">
+
+    <!--[if lte IE 7]>
+      <script src="/js/lte-ie7.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="./Edit fiddle - JSFiddle_files/screen.css">
+
+    <link rel="stylesheet" type="text/css" href="./Edit fiddle - JSFiddle_files/light.css">
+
+    <script type="text/javascript">
+      var csspath = "/css/",
+        jspath = "/js/",
+        imgpath = "/img/",
+        mediapath = "/mooshellmedia/",
+        codemirrorpath = "/codemirror/",
+        panel_html = 'html',
+        panel_css = 'css',
+        panel_js = 'javascript',
+        makefavouritepath = "/_make_favourite/",
+        example_server = "//jsfiddle.net",
+        username = "",
+        static_hash = "update19062015",
+        csrfToken = Cookie.read('csrftoken'),
+        mooshell,
+        preload_resources;
+      
+      Layout.skin = "";// "light"
+      window.addEvent('domready', function() {
+        if (panel_js != 'javascript' && $('jslint')) {
+          $('jslint').getParent('li').hide();
+        }
+
+        $extend(Layout, new Events());
+        mooshell = new MooShellActions({
+          example_id: '55315176',
+          exampleURL: "//jsfiddle.net/amcharts/mZ2Gq/",
+          exampleSaveUrl: '/_save/',
+          // sendCallbackURL: '',
+          loadDependenciesURL: '/_get_dependencies/{lib_id}/',
+          loadLibraryVersionsURL: '/_get_library_versions/{group_id}/'
+        });
+        new MooShellEditor.JS(document.id('id_code_js'), {
+          language: panel_js
+        }); // add user defined parameters
+        new MooShellEditor.HTML(document.id('id_code_html'), {
+          language: panel_html
+        }); // add user defined parameters
+        new MooShellEditor.CSS(document.id('id_code_css'), {
+          language: panel_css
+        }); // add user defined parameters
+        Layout.render();
+        
+      });
+      window.addEvent('load', function(){
+        
+
+        // show editors and content when the last editor loads
+        // this will prevent flickering, plus looks nice
+        document.id('content').setStyle('opacity', 1);
+        document.id('sidebar').setStyle('opacity', 1);
+
+        // always keep this at the bottom
+        $$('select.panelChoice').each(function(sel) {
+          this.switchLanguage(sel);
+        }, mooshell);
+      });
+      
+    </script>
+    
+
+    
+    <script type="text/javascript">
+      var pixelRatio = (window.devicePixelRatio >= 1.5) ? "High" : "Normal";
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-366077-13']);
+      _gaq.push(['_setCustomVar', 1, 'Pixel Ratio', pixelRatio, 2]);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <script>
+      var _prum = [['id', '526a363eabe53df827000000'],
+                   ['mark', 'firstbyte', (new Date()).getTime()]];
+      (function() {
+          var s = document.getElementsByTagName('script')[0]
+            , p = document.createElement('script');
+          p.async = 'async';
+          p.src = '//rum-static.pingdom.net/prum.min.js';
+          s.parentNode.insertBefore(p, s);
+      })();
+    </script>
+    <!-- <script>
+      (function(f,b){
+        var c;
+        f.hj=f.hj||function(){(f.hj.q=f.hj.q||[]).push(arguments)};
+        f._hjSettings={hjid:13981, hjsv:3};
+        c=b.createElement("script");c.async=1;
+        c.src="//static.hotjar.com/c/hotjar-13981.js?sv=3";
+        b.getElementsByTagName("head")[0].appendChild(c);
+      })(window,document);
+    </script>  -->
+      
+
+
+  <script>
+    window.intercomSettings = {
+      app_id: "wafdmsew"
+    };
+  </script>
+
+<script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/wafdmsew';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script>
+
+
+      
+    
+
+    <title>Edit fiddle - JSFiddle</title>
+  <style id="defaultStickyWinStyle">div.DefaultStickyWin {font-family:verdana; font-size:11px; line-height: 13px;position: relative;}div.DefaultStickyWin div.top{-moz-user-select: none;-khtml-user-select: none;}div.DefaultStickyWin div.top_ul{background:url(http://github.com/anutron/clientcide/raw/master/Assets/stickyWinHTML/full.png) top left no-repeat; height:30px; width:15px; float:left}div.DefaultStickyWin div.top_ur{position:relative; left:0px !important; left:-4px; background:url(http://github.com/anutron/clientcide/raw/master/Assets/stickyWinHTML/full.png) top right !important; height:30px; margin:0px 0px 0px 15px !important; margin-right:-4px; padding:0px}div.DefaultStickyWin h1.caption{clear: none !important; margin:0px !important; overflow: hidden; padding:0 !important; font-weight:bold; color:#555; font-size:14px !important; position:relative; top:8px !important; left:5px !important; float: left; height: 22px !important;}div.DefaultStickyWin div.middle, div.DefaultStickyWin div.closeBody {background:url(http://github.com/anutron/clientcide/raw/master/Assets/stickyWinHTML/body.png) top left repeat-y; margin:0px 20px 0px 0px !important;	margin-bottom: -3px; position: relative;	top: 0px !important; top: -3px;}div.DefaultStickyWin div.body{background:url(http://github.com/anutron/clientcide/raw/master/Assets/stickyWinHTML/body.png) top right repeat-y; padding:8px 23px 8px 0px !important; margin-left:5px !important; position:relative; right:-20px !important; z-index: 1;}div.DefaultStickyWin div.bottom{clear:both;}div.DefaultStickyWin div.bottom_ll{background:url(http://github.com/anutron/clientcide/raw/master/Assets/stickyWinHTML/full.png) bottom left no-repeat; width:15px; height:15px; float:left}div.DefaultStickyWin div.bottom_lr{background:url(http://github.com/anutron/clientcide/raw/master/Assets/stickyWinHTML/full.png) bottom right; position:relative; left:0px !important; left:-4px; margin:0px 0px 0px 15px !important; margin-right:-4px; height:15px}div.DefaultStickyWin div.closeButtons{text-align: center; background:url(http://github.com/anutron/clientcide/raw/master/Assets/stickyWinHTML/body.png) top right repeat-y; padding: 4px 30px 8px 0px; margin-left:5px; position:relative; right:-20px}div.DefaultStickyWin a.button:hover{background:url(http://github.com/anutron/clientcide/raw/master/Assets/stickyWinHTML/big_button_over.gif) repeat-x}div.DefaultStickyWin a.button {background:url(http://github.com/anutron/clientcide/raw/master/Assets/stickyWinHTML/big_button.gif) repeat-x; margin: 2px 8px 2px 8px; padding: 2px 12px; cursor:pointer; border: 1px solid #999 !important; text-decoration:none; color: #000 !important;}div.DefaultStickyWin div.closeButton{width:13px; height:13px; background:url(http://github.com/anutron/clientcide/raw/master/Assets/stickyWinHTML/closebtn.gif) no-repeat; position: absolute; right: 0px; margin:10px 15px 0px 0px !important; cursor:pointer;top:0px}div.DefaultStickyWin div.dragHandle {	width: 11px;	height: 25px;	position: relative;	top: 5px;	left: -3px;	cursor: move;	background: url(http://github.com/anutron/clientcide/raw/master/Assets/stickyWinHTML/drag_corner.gif); float: left;}</style><script src="./Edit fiddle - JSFiddle_files/beautifier.js" type="text/javascript"></script></head>
+  <body data-twttr-rendered="true">
+    <h1>Test your JavaScript, CSS, HTML or CoffeeScript online with JSFiddle code editor.</h1>
+    <h2>online javascript editor, testing javascript online, online ide, online code editor, html, css, coffeescript, scss online editor</h2>
+    <form method="post" id="show-result" target="result" action="http://fiddle.jshell.net/_display/">
+      
+      
+      <div style="display:none"><input type="hidden" name="csrfmiddlewaretoken" value="3kyLu9WfB4OzB8v4zMj27a5HnYiGZG9L"></div>
+      <div id="header">
+        <div id="branding">
+          <p id="name"><a title="JSFiddle " href="http://jsfiddle.net/" id="home">JSFiddle <span>α</span></a></p>
+        </div>
+        <div id="actions">
+	<ul class="actionCont collapsed" id="toggleSidebarUl">
+		<li class="actionItem"><a class="aiButton" id="toggleSidebar" title="Toggle sidebar" href="http://jsfiddle.net/amcharts/mZ2Gq/#toggle-sidebar"><span>Hide sidebar</span></a></li>
+  </ul>
+	<ul class="actionCont collapsed">
+		<li class="actionItem">
+			<a class="aiButton" id="run" title="Run (CTRL + Return)" href="http://jsfiddle.net/amcharts/mZ2Gq/#run"><span class="icon-caret-right"></span>Run</a>
+		</li>
+    
+
+    
+    
+
+    
+     
+      
+        <li class="actionItem">
+          <a class="aiButton" id="update" title="Update (CTRL + S)" href="http://jsfiddle.net/amcharts/mZ2Gq/#update"><span class="icon-pencil"></span>Update</a>
+        </li>
+        <li class="actionItem">
+          <a class="aiButton" id="savenew" title="Fork into a new Fiddle" href="http://jsfiddle.net/amcharts/mZ2Gq/#fork"><span class="icon-fork"></span>Fork</a>
+        </li>
+      
+    
+
+		
+
+    <li class="actionItem">
+    	<a class="aiButton" id="tidy" title="Re-indent messy code" href="http://jsfiddle.net/amcharts/mZ2Gq/#tidy"><span class="icon-broom"></span>TidyUp</a>
+    </li>
+    <li class="actionItem">
+    	<a class="aiButton" id="jslint" title="Run JSHint on the code" href="http://jsfiddle.net/amcharts/mZ2Gq/#jshint"><span class="icon-ok"></span>JSHint</a>
+    </li>
+    <li class="actionItem" style="display: none;">
+    	<a class="aiButton" id="showjscode" title="Show JavaScript code" href="http://jsfiddle.net/amcharts/mZ2Gq/#showjs"><span class="icon-pencil"></span>Show JS</a>
+    </li>
+    <li class="actionItem">
+    	<a class="aiButton" id="collaborate" title="" href="http://jsfiddle.net/amcharts/mZ2Gq/#collaborate"><span class="icon-group"></span>Collaboration</a>
+    </li>
+  </ul>
+
+	
+		<ul class="actionCont dropdown">
+			<li class="actionItem">
+				<a class="aiButton dropdownTrigger" id="share" title="Share this Fiddle" href="http://jsfiddle.net/amcharts/mZ2Gq/#share">Share<span class="icon-caret-down"></span></a>
+				<div class="dropdownCont" style="opacity: 0; visibility: hidden;">
+					<div class="dcWrapper">
+						
+						<div id="share_links_dropdown">
+							<p>
+								<label for="share_link_dropdown">Share link</label>
+								<input id="share_link_dropdown" type="text" class="share" value="https://jsfiddle.net/amcharts/mZ2Gq/">
+							</p>
+							<p>
+								<label for="share_result_dropdown">Share full screen result</label>
+								<input id="share_result_dropdown" type="text" class="share" value="https://jsfiddle.net/amcharts/mZ2Gq/embedded/result/">
+							</p>
+							<p>
+								<label for="share_embedded_dropdown">Embed on your page (<a href="http://doc.jsfiddle.net/use/embedding.html">embed options</a>)</label>
+								<input id="share_embedded_dropdown" type="text" class="share" value="&lt;iframe width=&quot;100%&quot; height=&quot;300&quot; src=&quot;//jsfiddle.net/amcharts/mZ2Gq/embedded/&quot; allowfullscreen=&quot;allowfullscreen&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;">
+							</p>
+						</div>
+
+						<ul id="share-social">
+							<li class="ssItem twitter"><span class="icon-twitter"></span><a href="http://twitter.com/home?status=Check%20out%20my%20fiddle:%20%20https://jsfiddle.net/amcharts/mZ2Gq/" title="Click to send this page to Twitter!" target="_blank">Share on Twitter</a></li>
+							<li class="ssItem facebook"><span class="icon-facebook"></span><a href="javascript:var%20d=document,f='http://www.facebook.com/share',l=d.location,e=encodeURIComponent,p='.php?src=bm&v=4&i=1244125276&u='+e(l.href)+'&t='+e(d.title);1;try%7Bif%20(!/%5E(.*%5C.)?facebook%5C.%5B%5E.%5D*$/.test(l.host))throw(0);share_internal_bookmarklet(p)%7Dcatch(z)%20%7Ba=function()%20%7Bif%20(!window.open(f+'r'+p,'sharer','toolbar=0,status=0,resizable=1,width=626,height=436'))l.href=f+p%7D;if%20(/Firefox/.test(navigator.userAgent))setTimeout(a,0);else%7Ba()%7D%7Dvoid(0)" title="Post to Facebook">Post to Facebook</a></li>
+						</ul>
+					</div>
+				</div>
+			</li>
+		</ul>
+	
+	
+	<ul class="actionCont right">
+		<!-- <li class="actionItem jobboard"><a class="aiButton" href="http://jobs.jsfiddle.net"><span class="icon-bullhorn"></span>JSFiddle Job Board</a></li> -->
+		<li class="actionItem noIcon"><a class="aiButton" id="login" title="Login" href="http://jsfiddle.net/user/login/">Login/Sign up<span class="icon-user"></span></a></li>
+	</ul>
+
+
+</div>
+
+
+      </div>
+      <div id="sidebar" style="opacity: 1;">
+        
+
+<script type="text/javascript">
+  var DP;
+
+  window.addEvent('domready', function(){
+    DP = new Dropdown();
+  });
+</script>
+
+<h3 class="toggler active" id="settings_toggler">Frameworks &amp; Extensions</h3>
+<div class="element" id="shell_settings">
+  <div class="elementBody" style="padding-top: 0px; border-top-style: none; padding-bottom: 0px; border-bottom-style: none; overflow: hidden; opacity: 1; height: auto;">
+    <div class="ebCont">
+      
+        
+          
+<select name="js_lib" id="js_lib">
+	
+		<optgroup label="Mootools">
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				<option value="59">Mootools (nightly)</option>
+			
+				<option value="218">Mootools 1.5.1 (nocompat)</option>
+			
+				<option value="216">Mootools 1.5.1</option>
+			
+				<option value="210">Mootools 1.5.0 (nocompat)</option>
+			
+				<option value="208">Mootools 1.5.0</option>
+			
+				<option value="96">Mootools 1.4.5 (compat)</option>
+			
+				<option value="95">Mootools 1.4.5</option>
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				<option value="63">Mootools 1.3.2 (compat)</option>
+			
+				<option value="62">Mootools 1.3.2</option>
+			
+				
+			
+				
+			
+				
+			
+				<option value="144">Mootools 1.2.6</option>
+			
+				
+			
+				
+			
+		</optgroup>
+	
+		<optgroup label="jQuery">
+			
+				<option value="146">jQuery Compat (edge)</option>
+			
+				
+			
+				<option value="46">jQuery (edge)</option>
+			
+				<option value="248">jQuery 2.1.3</option>
+			
+				<option value="188">jQuery 2.1.0</option>
+			
+				<option value="157">jQuery 2.0.2</option>
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				<option value="186">jQuery 1.11.0</option>
+			
+				<option value="156">jQuery 1.10.1</option>
+			
+				
+			
+				<option value="131">jQuery 1.9.1</option>
+			
+				<option value="112" selected="selected">jQuery 1.8.3</option>
+			
+				<option value="101">jQuery 1.7.2</option>
+			
+				
+			
+				
+			
+				<option value="75">jQuery 1.6.4</option>
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+		</optgroup>
+	
+		<optgroup label="Prototype">
+			
+				
+			
+				<option value="254">Prototype 1.7.2</option>
+			
+				<option value="54">Prototype 1.7.1</option>
+			
+				<option value="4">Prototype 1.6.1.0</option>
+			
+		</optgroup>
+	
+		<optgroup label="YUI">
+			
+				
+			
+				<option value="230">YUI 3.17.2</option>
+			
+				<option value="204">YUI 3.16.0</option>
+			
+				<option value="182">YUI 3.14.0</option>
+			
+				<option value="153">YUI 3.10.1</option>
+			
+				
+			
+				<option value="130">YUI 3.8.0</option>
+			
+				<option value="123">YUI 3.7.3</option>
+			
+				<option value="118">YUI 3.6.0</option>
+			
+				<option value="102">YUI 3.5.0</option>
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				<option value="9">YUI 2.8.0r4</option>
+			
+				
+			
+		</optgroup>
+	
+		<optgroup label="Glow">
+			
+				
+			
+				
+			
+		</optgroup>
+	
+		<optgroup label="No-Library">
+			
+				<option value="11">No-Library (pure JS)</option>
+			
+		</optgroup>
+	
+		<optgroup label="Dojo">
+			
+				<option value="87">Dojo (nightly)</option>
+			
+				<option value="240">Dojo 1.10.4</option>
+			
+				
+			
+				
+			
+				<option value="242">Dojo 1.9.7</option>
+			
+				
+			
+				
+			
+				
+			
+				<option value="244">Dojo 1.8.10</option>
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				<option value="246">Dojo 1.7.8</option>
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				<option value="196">Dojo 1.6.2</option>
+			
+				
+			
+				
+			
+				<option value="194">Dojo 1.5.3</option>
+			
+				
+			
+				
+			
+				
+			
+				
+			
+		</optgroup>
+	
+		<optgroup label="Processing.js">
+			
+				<option value="206">Processing.js 1.4.7</option>
+			
+				<option value="135">Processing.js 1.4.1</option>
+			
+				<option value="81">Processing.js 1.3.6</option>
+			
+				<option value="67">Processing.js 1.2.3</option>
+			
+				
+			
+				
+			
+				
+			
+				
+			
+		</optgroup>
+	
+		<optgroup label="ExtJS">
+			
+				<option value="256">ExtJS 5.1.0</option>
+			
+				<option value="258">ExtJS 5.0.0</option>
+			
+				<option value="147">ExtJS 4.2.0</option>
+			
+				<option value="80">ExtJS 4.1.1</option>
+			
+				<option value="107">ExtJS 4.1.0</option>
+			
+				
+			
+				<option value="109">ExtJS 3.4.0</option>
+			
+				<option value="23">ExtJS 3.1.0</option>
+			
+				
+			
+		</optgroup>
+	
+		<optgroup label="Raphael">
+			
+				<option value="76">Raphael 2.1.0</option>
+			
+				<option value="36">Raphael 1.5.2 (min)</option>
+			
+				<option value="30">Raphael 1.4</option>
+			
+				
+			
+		</optgroup>
+	
+		<optgroup label="RightJS">
+			
+				<option value="136">RightJS 2.3.1</option>
+			
+				<option value="45">RightJS 2.1.1</option>
+			
+		</optgroup>
+	
+		<optgroup label="Three.js">
+			
+				<option value="82">Three.js r54</option>
+			
+		</optgroup>
+	
+		<optgroup label="Zepto">
+			
+				<option value="90">Zepto 1.0rc1</option>
+			
+		</optgroup>
+	
+		<optgroup label="Enyo">
+			
+				<option value="115">Enyo (nightly)</option>
+			
+				<option value="238">Enyo 2.5.1</option>
+			
+				<option value="214">Enyo 2.4.0</option>
+			
+				<option value="145">Enyo 2.2.0</option>
+			
+				<option value="121">Enyo 2.1</option>
+			
+				<option value="116">Enyo 2.0.1</option>
+			
+				
+			
+		</optgroup>
+	
+		<optgroup label="Shipyard">
+			
+				<option value="99">Shipyard (nightly)</option>
+			
+				<option value="105">Shipyard 0.2</option>
+			
+				
+			
+		</optgroup>
+	
+		<optgroup label="Knockout.js">
+			
+				<option value="172">Knockout.js 3.0.0</option>
+			
+				<option value="163">Knockout.js 2.3.0</option>
+			
+				<option value="122">Knockout.js 2.2.1</option>
+			
+				<option value="117">Knockout.js 2.1.0</option>
+			
+				<option value="104">Knockout.js 2.0.0</option>
+			
+		</optgroup>
+	
+		<optgroup label="The X Toolkit">
+			
+				<option value="106">The X Toolkit edge</option>
+			
+		</optgroup>
+	
+		<optgroup label="AngularJS">
+			
+				<option value="180">AngularJS 1.2.1</option>
+			
+				<option value="137">AngularJS 1.1.1</option>
+			
+				
+			
+				
+			
+		</optgroup>
+	
+		<optgroup label="Ember">
+			
+				<option value="190">Ember 1.3.1</option>
+			
+				
+			
+				
+			
+				
+			
+		</optgroup>
+	
+		<optgroup label="Underscore">
+			
+				<option value="160">Underscore 1.4.4</option>
+			
+				<option value="133">Underscore 1.4.3</option>
+			
+				<option value="111">Underscore 1.3.3</option>
+			
+		</optgroup>
+	
+		<optgroup label="Bonsai">
+			
+				<option value="120">Bonsai 0.4.1</option>
+			
+		</optgroup>
+	
+		<optgroup label="KineticJS">
+			
+				<option value="139">KineticJS 4.3.1</option>
+			
+				<option value="124">KineticJS 4.0.5</option>
+			
+		</optgroup>
+	
+		<optgroup label="FabricJS">
+			
+				<option value="250">FabricJS 1.5.0</option>
+			
+				<option value="178">FabricJS 1.4.0</option>
+			
+				<option value="161">FabricJS 1.2.0</option>
+			
+				<option value="125">FabricJS 0.9</option>
+			
+		</optgroup>
+	
+		<optgroup label="qooxdoo">
+			
+				<option value="126">qooxdoo 2.1</option>
+			
+				<option value="127">qooxdoo 2.0.3</option>
+			
+		</optgroup>
+	
+		<optgroup label="D3">
+			
+				<option value="134">D3 3.0.4</option>
+			
+		</optgroup>
+	
+		<optgroup label="CreateJS">
+			
+				<option value="170">CreateJS 2013.09.25</option>
+			
+				
+			
+		</optgroup>
+	
+		<optgroup label="WebApp Install">
+			
+				<option value="142">WebApp Install 0.1</option>
+			
+		</optgroup>
+	
+		<optgroup label="Thorax">
+			
+				<option value="174">Thorax 2.0.0rc6</option>
+			
+				<option value="143">Thorax 2.0.0rc3</option>
+			
+		</optgroup>
+	
+		<optgroup label="Paper.js">
+			
+				<option value="158">Paper.js 0.22</option>
+			
+		</optgroup>
+	
+		<optgroup label="React">
+			
+				<option value="192">React 0.9.0</option>
+			
+				<option value="184">React 0.8.0</option>
+			
+				<option value="166">React 0.4.0</option>
+			
+				<option value="159">React 0.3.2</option>
+			
+		</optgroup>
+	
+		<optgroup label="svg.js">
+			
+				<option value="162">svg.js 0.x (latest)</option>
+			
+		</optgroup>
+	
+		<optgroup label="Minified">
+			
+				<option value="164">Minified 1.0 beta1</option>
+			
+		</optgroup>
+	
+		<optgroup label="jTypes">
+			
+				<option value="165">jTypes 2.1.0</option>
+			
+		</optgroup>
+	
+		<optgroup label="Lo-Dash">
+			
+				<option value="167">Lo-Dash 2.2.1</option>
+			
+		</optgroup>
+	
+		<optgroup label="Brick">
+			
+				<option value="176">Brick edge</option>
+			
+		</optgroup>
+	
+		<optgroup label="RactiveJS">
+			
+				<option value="220">RactiveJS Latest</option>
+			
+				<option value="232">RactiveJS Edge</option>
+			
+		</optgroup>
+	
+		<optgroup label="Vue">
+			
+				<option value="236">Vue (edge)</option>
+			
+				<option value="234">Vue 0.11.0</option>
+			
+		</optgroup>
+	
+		<optgroup label="JSBlocks">
+			
+				<option value="252">JSBlocks (edge)</option>
+			
+		</optgroup>
+	
+</select>
+
+<ul id="js_dependency">
+	
+	<li><input type="checkbox" id="dep_151" name="js_dependency[151]" value="151"><label for="dep_151">jQuery Mobile 1.2.0</label></li>
+
+	<li><input type="checkbox" id="dep_152" name="js_dependency[152]" value="152"><label for="dep_152">jQuery UI 1.9.2</label></li>
+
+
+</ul>
+
+        
+      
+
+      <select name="js_wrap" id="id_js_wrap">
+<option value="l">onLoad</option>
+<option value="d">onDomready</option>
+<option value="h" selected="selected">No wrap - in &lt;head&gt;</option>
+<option value="b">No wrap - in &lt;body&gt;</option>
+</select>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.addEvent('load', function() {
+    $('js_lib').addEvent('change', function() {
+      mooshell.loadDependencies(this.value);
+    })
+    if ($('library_group')) $('library_group').addEvent('change', function() {
+      mooshell.loadLibraryVersions(this.value);
+    })
+  });
+</script>
+
+        <h3 id="about_toggler" class="toggler">Fiddle Options</h3>
+<div class="element">
+  <div class="elementBody" style="padding-top: 0px; border-top-style: none; padding-bottom: 0px; border-bottom-style: none; overflow: hidden; opacity: 0; height: 0px;">
+    <div class="ebCont">
+      <p>
+        <label>
+          <input id="id_title" type="text" name="title" maxlength="255" value="" placeholder="Name your fiddle">
+        </label>
+      </p>
+      <p>
+        <label>
+          <textarea id="id_description" rows="10" cols="40" name="description" placeholder="Description"></textarea>
+        </label>
+      </p>
+      <p id="normalize_check">
+        <input checked="checked" type="checkbox" name="normalize_css" id="id_normalize_css"> <label for="id_normalize_css">Normalized CSS</label><br>
+        
+      </p>
+      <p>
+        <label>
+          Body tag
+          <input id="id_body_tag" type="text" name="body_tag" value="&lt;body&gt;" maxlength="255">
+        </label>
+      </p>
+      <p>
+        <label>DTD
+          <select name="doctype">
+            
+              <option id="dtd_XHTML 1.0 Strict" value="1">XHTML 1.0 Strict</option>
+            
+              <option id="dtd_XHTML 1.0 Transitional" value="2">XHTML 1.0 Transitional</option>
+            
+              <option selected="" id="dtd_HTML 5" value="3">HTML 5</option>
+            
+              <option id="dtd_HTML 4.01 Strict" value="4">HTML 4.01 Strict</option>
+            
+              <option id="dtd_HTML 4.01 Transitional" value="5">HTML 4.01 Transitional</option>
+            
+              <option id="dtd_HTML 4.01 Frameset" value="6">HTML 4.01 Frameset</option>
+            
+          </select>
+        </label>
+      </p>
+      
+        <p class="libraryTagAttributes">
+          <label>
+            Framework &lt;script&gt; attribute
+            <input id="id_js_lib_option" type="text" name="js_lib_option" maxlength="255" placeholder="ie. data-type=&quot;&quot;" value="">
+          </label>
+        </p>
+      
+    </div>
+  </div>
+</div>
+
+        
+
+<h3 class="toggler filled" id="resources_toggler">
+  External Resources <em>4</em>
+</h3>
+
+
+<div class="element" id="resources_element">
+  <div class="elementBody" style="padding-top: 0px; border-top-style: none; padding-bottom: 0px; border-bottom-style: none; overflow: hidden; opacity: 0; height: 0px;">
+    <div class="ebCont">
+      <div id="external-resources-form">
+        <input id="external_resource" type="text" value="" placeholder="JavaScript/CSS URI">
+        <a id="add_external_resource" class="submit" href="http://jsfiddle.net/amcharts/mZ2Gq/#" title="Add resource"><span class="icon-plus"></span></a>
+      </div>
+      <input type="hidden" value="89319,72793,257185,257186" id="external_resources_id" name="add_external_resources">
+
+      <ul id="external_resources_list">
+      <script type="text/javascript">var resources = [];</script>
+      
+        <li id="external_resource_89319">
+          <a class="filename" target="_blank" href="./Edit fiddle - JSFiddle_files/jquery-ui.min.js" title="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js">
+            jquery-ui.min.js
+          </a>
+          <a onclick="remove_resource(89319)" class="remove">
+            Remove
+          </a>
+        </li>
+        <script type="text/javascript">resources.push(89319)</script>
+      
+        <li id="external_resource_72793">
+          <a class="filename" target="_blank" href="./Edit fiddle - JSFiddle_files/jquery-ui.css" title="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/themes/ui-lightness/jquery-ui.css">
+            jquery-ui.css
+          </a>
+          <a onclick="remove_resource(72793)" class="remove">
+            Remove
+          </a>
+        </li>
+        <script type="text/javascript">resources.push(72793)</script>
+      
+        <li id="external_resource_257185">
+          <a class="filename" target="_blank" href="./Edit fiddle - JSFiddle_files/amcharts.js" title="http://www.amcharts.com/lib/3/amcharts.js">
+            amcharts.js
+          </a>
+          <a onclick="remove_resource(257185)" class="remove">
+            Remove
+          </a>
+        </li>
+        <script type="text/javascript">resources.push(257185)</script>
+      
+        <li id="external_resource_257186">
+          <a class="filename" target="_blank" href="./Edit fiddle - JSFiddle_files/serial.js" title="http://www.amcharts.com/lib/3/serial.js">
+            serial.js
+          </a>
+          <a onclick="remove_resource(257186)" class="remove">
+            Remove
+          </a>
+        </li>
+        <script type="text/javascript">resources.push(257186)</script>
+      
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  var default_text = 'JavaScript/CSS URL',
+      add_external_resource_url = "/_add_external_resource/";
+</script>
+
+        
+<h3 class="toggler" id="pannels_toggler">Languages</h3>
+<div class="element" id="panels_settings">
+  <div class="elementBody" style="padding-top: 0px; border-top-style: none; padding-bottom: 0px; border-bottom-style: none; overflow: hidden; opacity: 0; height: 0px;">
+    <div class="ebCont">
+      <div class="selectPanel">
+          <select name="panel_html" class="panelChoice panelChoiceSelect html" id="panel_html_choice" disabled="disabled" data-panel_id="id_code_html" data-panel="html">
+        
+          <option data-mime-type="text/xml" value="0" selected="">HTML</option>
+        
+        </select>
+
+        <select name="panel_css" class="panelChoice panelChoiceSelect css" id="panel_css_choice" data-panel_id="id_code_css" data-panel="css">
+          
+            <option data-mime-type="text/css" value="0" selected="">CSS</option>
+          
+            <option data-mime-type="text/css" value="1">SCSS</option>
+          
+        </select>
+
+        <select name="panel_js" class="panelChoice panelChoiceSelect js" id="panel_js_choice" data-panel_id="id_code_js" data-panel="js">
+          
+            <option data-mime-type="text/javascript" value="0" selected="">JavaScript</option>
+          
+            <option data-mime-type="text/x-coffeescript" value="1">CoffeeScript</option>
+          
+            <option data-mime-type="application/javascript;version=1.7" value="2">JavaScript 1.7</option>
+          
+        </select>
+        <span class="selectFake panelChoice result">Results</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        <h3 class="toggler">Ajax Requests</h3>
+<div class="element">
+  <div class="elementBody" style="padding-top: 0px; border-top-style: none; padding-bottom: 0px; border-bottom-style: none; overflow: hidden; opacity: 0; height: 0px;">
+    <div class="ebCont">
+
+      <p>Echo apis are created to simulate Ajax calls:
+        <code>/echo/json/</code> for JSON,
+        <code>//jsfiddle.net/echo/jsonp/</code> for JSONP,
+        <code>/echo/html/</code> for HTML and
+        <code>/echo/xml/</code> for XML.
+      </p>
+      <p>Please <a href="http://doc.jsfiddle.net/use/echo.html" target="_new">read API documentation</a> and follow
+        <a onclick="Layout.sidebar.accordion.display(Layout.sidebar.accordion.togglers.indexOf($(&#39;examples_toggler&#39;)))" href="http://jsfiddle.net/amcharts/mZ2Gq/#">examples</a>.
+      </p>
+    </div>
+  </div>
+</div>
+
+        
+        <h3 class="toggler">Legal, Credits and Links</h3>
+<div class="element">
+  <div class="elementBody" style="padding-top: 0px; border-top-style: none; padding-bottom: 0px; border-bottom-style: none; overflow: hidden; opacity: 0; height: 0px;">
+    <div class="ebCont">
+      <p>Created and maintained by <a title="Piotr&#39;s homepage" href="http://twitter.com/zalun" target="_blank">Piotr</a> and <a title="UX and UI Designer" href="https://twitter.com/oskar" target="_blank">Oskar</a>.</p>
+      <p>Hosted by <a href="https://www.digitalocean.com/" target="_credits"><strong>DigitalOcean</strong></a></p>
+      <p>Powered by <a href="http://customer.io/" target="_credits"><strong>Customer.io</strong></a></p>
+      <!-- <p>Special thanks to <a href="http://mootools.net" target="_blank">MooTools</a> community.</p> -->
+      <p><strong>License</strong></p>
+      <p>All code belongs to the poster and no license is enforced.</p>
+      <p>JSFiddle or its authors are not responsible or liable for any loss or damage of any kind during the usage of provided code.</p>
+      <p><strong>Links</strong></p>
+      <p>
+        Please read the <a href="http://doc.jsfiddle.net/" target="_blank">documentation</a>.
+      </p>
+    </div>
+  </div>
+</div>
+
+        
+
+        <div class="twitterCont">
+          <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="./Edit fiddle - JSFiddle_files/follow_button.403b2a3ca10837290e034c22c8a16c06.en.html" class="twitter-follow-button twitter-follow-button" title="Twitter Follow Button" data-twttr-rendered="true" style="position: static; visibility: visible; width: 198px; height: 20px;"></iframe>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        </div>
+        <a class="keyActions" href="http://jsfiddle.net/amcharts/mZ2Gq/#keyboard">Keyboard shortcuts</a>
+      </div>
+      <div id="content" style="height: 714px; opacity: 1;">
+        
+        
+
+<input type="hidden" name="version" value="25" id="id_version">
+<input type="hidden" id="id_slug" name="slug" value="mZ2Gq">
+<fieldset class="column left" style="width: 50.8069336521219%;">
+    <div class="window top" id="panel_html" data-panel_type="html">
+		<textarea id="id_code_html" rows="10" cols="40" name="code_html" style="display: none;">  &lt;div id="tabs"&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href="#tab1"&gt;Tab 1&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#tab2"&gt;Chart Tab&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#tab3"&gt;Tab 3&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;div id="tab1" class="tab"&gt;
+        &lt;p&gt;This is just some empty tab. Click "Chart Tab" to display the chart.&lt;/p&gt;
+        &lt;p&gt;Once you do jQuery UI Tabs "select" event is executed and chart.invalidateSize() is called&lt;/p&gt;
+        &lt;p&gt;Make sure you're running at least 2.7.6 version of amCharts&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div id="tab2" class="tab"&gt;&lt;/div&gt;
+    &lt;div id="tab3" class="tab"&gt;This is too an empty tab&lt;/div&gt;
+  &lt;/div&gt;
+</textarea>
+		<span class="window_label" style="opacity: 0.8;">HTML</span>
+	<div class="CodeMirror cm-s-default CodeMirror-wrap"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 32px;"><textarea autocorrect="off" autocapitalize="off" tabindex="0" style="position: absolute; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-hscrollbar" style="left: 28px; min-height: 18px;"><div style="height: 1px;"></div></div><div class="CodeMirror-vscrollbar" style="display: block; bottom: 0px; min-width: 18px;"><div style="width: 1px; height: 297px;"></div></div><div class="CodeMirror-scrollbar-filler"></div><div class="CodeMirror-scroll" tabindex="-1"><div style="position: relative; min-height: 100%;"><div class="CodeMirror-sizer" style="margin-left: 28px; min-height: 297px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span> </span><span> </span><span class="cm-tag">&lt;</span><span class="cm-tag">d</span><span class="cm-tag">i</span><span class="cm-tag">v</span><span> </span><span class="cm-attribute">i</span><span class="cm-attribute">d</span><span>=</span><span class="cm-string">"</span><span class="cm-string">t</span><span class="cm-string">a</span><span class="cm-string">b</span><span class="cm-string">s</span><span class="cm-string">"</span><span class="cm-tag">&gt;</span></pre></div><div style="position: relative; z-index: 1; display: none;"></div><div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">1</div></div><pre>  <span class="cm-tag">&lt;div</span> <span class="cm-attribute">id</span>=<span class="cm-string">"tabs"</span><span class="cm-tag">&gt;</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">2</div></div><pre>    <span class="cm-tag">&lt;ul&gt;</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">3</div></div><pre>      <span class="cm-tag">&lt;li&gt;&lt;a</span> <span class="cm-attribute">href</span>=<span class="cm-string">"#tab1"</span><span class="cm-tag">&gt;</span>Tab 1<span class="cm-tag">&lt;/a&gt;&lt;/li&gt;</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">4</div></div><pre>      <span class="cm-tag">&lt;li&gt;&lt;a</span> <span class="cm-attribute">href</span>=<span class="cm-string">"#tab2"</span><span class="cm-tag">&gt;</span>Chart Tab<span class="cm-tag">&lt;/a&gt;&lt;/li&gt;</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">5</div></div><pre>      <span class="cm-tag">&lt;li&gt;&lt;a</span> <span class="cm-attribute">href</span>=<span class="cm-string">"#tab3"</span><span class="cm-tag">&gt;</span>Tab 3<span class="cm-tag">&lt;/a&gt;&lt;/li&gt;</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">6</div></div><pre>    <span class="cm-tag">&lt;/ul&gt;</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">7</div></div><pre>    <span class="cm-tag">&lt;div</span> <span class="cm-attribute">id</span>=<span class="cm-string">"tab1"</span> <span class="cm-attribute">class</span>=<span class="cm-string">"tab"</span><span class="cm-tag">&gt;</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">8</div></div><pre>        <span class="cm-tag">&lt;p&gt;</span>This is just some empty tab. Click "Chart Tab" to display the chart.<span class="cm-tag">&lt;/p&gt;</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">9</div></div><pre>        <span class="cm-tag">&lt;p&gt;</span>Once you do jQuery UI Tabs "select" event is executed and chart.invalidateSize() is called<span class="cm-tag">&lt;/p&gt;</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">10</div></div><pre>        <span class="cm-tag">&lt;p&gt;</span>Make sure you're running at least 2.7.6 version of amCharts<span class="cm-tag">&lt;/p&gt;</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">11</div></div><pre>    <span class="cm-tag">&lt;/div&gt;</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">12</div></div><pre>    <span class="cm-tag">&lt;div</span> <span class="cm-attribute">id</span>=<span class="cm-string">"tab2"</span> <span class="cm-attribute">class</span>=<span class="cm-string">"tab"</span><span class="cm-tag">&gt;&lt;/div&gt;</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">13</div></div><pre>    <span class="cm-tag">&lt;div</span> <span class="cm-attribute">id</span>=<span class="cm-string">"tab3"</span> <span class="cm-attribute">class</span>=<span class="cm-string">"tab"</span><span class="cm-tag">&gt;</span>This is too an empty tab<span class="cm-tag">&lt;/div&gt;</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">14</div></div><pre>  <span class="cm-tag">&lt;/div&gt;</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">15</div></div><pre>&nbsp;</pre></div><div style="position: relative; display: none;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">13</div></div><pre>    <span class="cm-tag">&lt;div</span> <span class="cm-attribute">id</span>=<span class="cm-string">"tab3"</span> <span class="cm-attribute">class</span>=<span class="cm-string">"tab"</span><span class="cm-tag">&gt;</span>This is too an empty tab<span class="cm-tag">&lt;/div&gt;</span></pre></div></div><div class="CodeMirror-cursor" style="left: 4px; top: 1px; height: 15px;">&nbsp;</div><div class="CodeMirror-cursor CodeMirror-secondarycursor" style="display: none;">&nbsp;</div></div></div></div></div><div style="position: absolute; height: 30px; top: 297px;">&nbsp;</div><div class="CodeMirror-gutters"><div class="CodeMirror-gutter note-gutter"></div><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 28px;"></div></div></div></div></div></div>
+	<div class="handler handler_horizontal" style="top: 175px;"></div>
+	<div class="window bottom" id="panel_js" data-panel_type="javascript">
+		<textarea id="id_code_js" rows="10" cols="40" name="code_js" style="display: none;">var chart;
+    var graph;
+
+    // note, some of tada points don't have value field
+    var chartData = [{
+        year: new Date(1950, 0),
+        value: -0.307
+    }, {
+        year: new Date(1951, 0),
+        value: -0.168
+    }, {
+        year: new Date(1952, 0),
+        value: -0.073
+    }, {
+        year: new Date(1953, 0),
+        value: -0.027
+    }, {
+        year: new Date(1954, 0),
+        value: -0.251
+    }, {
+        year: new Date(1955, 0),
+        value: -0.281
+    }, {
+        year: new Date(1956, 0),
+        value: -0.348
+    }, {
+        year: new Date(1957, 0),
+        value: -0.074
+    }, {
+        year: new Date(1958, 0),
+        value: -0.011
+    }, {
+        year: new Date(1959, 0),
+        value: -0.074
+    }, {
+        year: new Date(1960, 0),
+        value: -0.124
+    }, {
+        year: new Date(1961, 0),
+        value: -0.024
+    }, {
+        year: new Date(1962, 0),
+        value: -0.022
+    }, {
+        year: new Date(1963, 0),
+        value: 0.000
+    }, {
+        year: new Date(1964, 0),
+        value: -0.296
+    }, {
+        year: new Date(1965, 0),
+        value: -0.217
+    }, {
+        year: new Date(1966, 0),
+        value: -0.147
+    }, {
+        year: new Date(1967, 0)
+    }, {
+        year: new Date(1968, 0)
+    }, {
+        year: new Date(1969, 0)
+    }, {
+        year: new Date(1970, 0)
+    }, {
+        year: new Date(1971, 0),
+        value: -0.190
+    }, {
+        year: new Date(1972, 0),
+        value: -0.056
+    }, {
+        year: new Date(1973, 0),
+        value: 0.077
+    }, {
+        year: new Date(1974, 0),
+        value: -0.213
+    }, {
+        year: new Date(1975, 0),
+        value: -0.170
+    }, {
+        year: new Date(1976, 0),
+        value: -0.254
+    }, {
+        year: new Date(1977, 0),
+        value: 0.019
+    }, {
+        year: new Date(1978, 0),
+        value: -0.063
+    }, {
+        year: new Date(1979, 0),
+        value: 0.050
+    }, {
+        year: new Date(1980, 0),
+        value: 0.077
+    }, {
+        year: new Date(1981, 0),
+        value: 0.120
+    }, {
+        year: new Date(1982, 0),
+        value: 0.011
+    }, {
+        year: new Date(1983, 0),
+        value: 0.177
+    }, {
+        year: new Date(1984, 0)
+    }, {
+        year: new Date(1985, 0)
+    }, {
+        year: new Date(1986, 0)
+    }, {
+        year: new Date(1987, 0)
+    }, {
+        year: new Date(1988, 0)
+    }, {
+        year: new Date(1989, 0),
+        value: 0.104
+    }, {
+        year: new Date(1990, 0),
+        value: 0.255
+    }, {
+        year: new Date(1991, 0),
+        value: 0.210
+    }, {
+        year: new Date(1992, 0),
+        value: 0.065
+    }, {
+        year: new Date(1993, 0),
+        value: 0.110
+    }, {
+        year: new Date(1994, 0),
+        value: 0.172
+    }, {
+        year: new Date(1995, 0),
+        value: 0.269
+    }, {
+        year: new Date(1996, 0),
+        value: 0.141
+    }, {
+        year: new Date(1997, 0),
+        value: 0.353
+    }, {
+        year: new Date(1998, 0),
+        value: 0.548
+    }, {
+        year: new Date(1999, 0),
+        value: 0.298
+    }, {
+        year: new Date(2000, 0),
+        value: 0.267
+    }, {
+        year: new Date(2001, 0),
+        value: 0.411
+    }, {
+        year: new Date(2002, 0),
+        value: 0.462
+    }, {
+        year: new Date(2003, 0),
+        value: 0.470
+    }, {
+        year: new Date(2004, 0),
+        value: 0.445
+    }, {
+        year: new Date(2005, 0),
+        value: 0.470
+    }];
+
+
+    AmCharts.ready(function () {
+        // SERIAL CHART
+        chart = new AmCharts.AmSerialChart();
+        chart.pathToImages = "amcharts/images/";
+        chart.marginTop = 0;
+        chart.marginRight = 0;
+        chart.dataProvider = chartData;
+        chart.categoryField = "year";
+        chart.zoomOutButton = {
+            backgroundColor: '#000000',
+            backgroundAlpha: 0.15
+        };
+
+        // AXES
+        // category
+        var categoryAxis = chart.categoryAxis;
+        categoryAxis.parseDates = true; // as our data is date-based, we set parseDates to true
+        categoryAxis.minPeriod = "YYYY"; // our data is yearly, so we set minPeriod to YYYY
+        categoryAxis.dashLength = 1;
+        categoryAxis.axisColor = "#DADADA";
+
+        // value
+        var valueAxis = new AmCharts.ValueAxis();
+        valueAxis.axisAlpha = 0;
+        valueAxis.dashLength = 1;
+        valueAxis.inside = true;
+        chart.addValueAxis(valueAxis);
+
+        // GRAPH
+        graph = new AmCharts.AmGraph();
+        graph.lineColor = "#b6d278";
+        graph.negativeLineColor = "#487dac"; // this line makes the graph to change color when it drops below 0
+        graph.bullet = "round";
+        graph.bulletSize = 5;
+        graph.connect = false; // this makes the graph not to connect data points if data is missing
+        graph.lineThickness = 2;
+        graph.valueField = "value";
+        chart.addGraph(graph);
+
+        // CURSOR  
+        var chartCursor = new AmCharts.ChartCursor();
+        chartCursor.cursorAlpha = 0;
+        chartCursor.cursorPosition = "mouse";
+        chartCursor.categoryBalloonDateFormat = "YYYY";
+        chart.addChartCursor(chartCursor);
+
+        // WRITE
+        chart.write("tab2");
+    });
+    
+    $(function() {
+      $( "#tabs" ).tabs({
+        select: function(event, ui) {
+          console.log('Calling chart.invalidateSize()');
+          chart.invalidateSize();
+        }
+      });
+    });
+
+</textarea>
+		<span class="window_label" style="opacity: 0;">JavaScript</span>
+	<div class="CodeMirror cm-s-default CodeMirror-wrap"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 438px; left: 131.976226806641px;"><textarea autocorrect="off" autocapitalize="off" style="position: absolute; padding: 0px; width: 1000px; height: 1em; outline: none;" tabindex="0"></textarea></div><div class="CodeMirror-hscrollbar" style="left: 28px; min-height: 18px;"><div style="height: 1px;"></div></div><div class="CodeMirror-vscrollbar" style="display: block; bottom: 0px; min-width: 18px;"><div style="width: 1px; height: 3918px;"></div></div><div class="CodeMirror-scrollbar-filler"></div><div class="CodeMirror-scroll" tabindex="-1"><div style="position: relative; min-height: 100%;"><div class="CodeMirror-sizer" style="margin-left: 28px; min-height: 3918px;"><div style="position: relative; top: 2907px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span> </span><span> </span><span> </span><span> </span><span class="cm-variable">$</span><span>(</span><span class="cm-keyword">f</span><span class="cm-keyword">u</span><span class="cm-keyword">n</span><span class="cm-keyword">c</span><span class="cm-keyword">t</span><span class="cm-keyword">i</span><span class="cm-keyword">o</span><span class="cm-keyword">n</span><span>(</span><span>)</span><span> </span><span>{</span></pre></div><div style="position: relative; z-index: 1;"><div class="CodeMirror-selected" style="position: absolute; left: 46.8469543457031px; top: 834px; width: 57.1292724609375px; height: 15px;"></div></div><div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">172</div></div><pre>        <span class="cm-variable">chart</span>.<span class="cm-property">marginRight</span> = <span class="cm-number">0</span>;</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">173</div></div><pre>        <span class="cm-variable">chart</span>.<span class="cm-property">dataProvider</span> = <span class="cm-variable">chartData</span>;</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">174</div></div><pre>        <span class="cm-variable">chart</span>.<span class="cm-property">categoryField</span> = <span class="cm-string">"year"</span>;</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">175</div></div><pre>        <span class="cm-variable">chart</span>.<span class="cm-property">zoomOutButton</span> = {</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">176</div></div><pre>            <span class="cm-property">backgroundColor</span>: <span class="cm-string">'#000000'</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">177</div></div><pre>            <span class="cm-property">backgroundAlpha</span>: <span class="cm-number">0.15</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">178</div></div><pre>        };</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">179</div></div><pre>&nbsp;</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">180</div></div><pre>        <span class="cm-comment">// AXES</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">181</div></div><pre>        <span class="cm-comment">// category</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">182</div></div><pre>        <span class="cm-keyword">var</span> <span class="cm-def">categoryAxis</span> = <span class="cm-variable">chart</span>.<span class="cm-property">categoryAxis</span>;</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">183</div></div><pre>        <span class="cm-variable-2">categoryAxis</span>.<span class="cm-property">parseDates</span> = <span class="cm-atom">true</span>; <span class="cm-comment">// as our data is date-based, we set parseDates to true</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">184</div></div><pre>        <span class="cm-variable-2">categoryAxis</span>.<span class="cm-property">minPeriod</span> = <span class="cm-string">"YYYY"</span>; <span class="cm-comment">// our data is yearly, so we set minPeriod to YYYY</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">185</div></div><pre>        <span class="cm-variable-2">categoryAxis</span>.<span class="cm-property">dashLength</span> = <span class="cm-number">1</span>;</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">186</div></div><pre>        <span class="cm-variable-2">categoryAxis</span>.<span class="cm-property">axisColor</span> = <span class="cm-string">"#DADADA"</span>;</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">187</div></div><pre>&nbsp;</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">188</div></div><pre>        <span class="cm-comment">// value</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">189</div></div><pre>        <span class="cm-keyword">var</span> <span class="cm-def">valueAxis</span> = <span class="cm-keyword">new</span> <span class="cm-variable">AmCharts</span>.<span class="cm-property">ValueAxis</span>();</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">190</div></div><pre>        <span class="cm-variable-2">valueAxis</span>.<span class="cm-property">axisAlpha</span> = <span class="cm-number">0</span>;</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">191</div></div><pre>        <span class="cm-variable-2">valueAxis</span>.<span class="cm-property">dashLength</span> = <span class="cm-number">1</span>;</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">192</div></div><pre>        <span class="cm-variable-2">valueAxis</span>.<span class="cm-property">inside</span> = <span class="cm-atom">true</span>;</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">193</div></div><pre>        <span class="cm-variable">chart</span>.<span class="cm-property">addValueAxis</span>(<span class="cm-variable-2">valueAxis</span>);</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">194</div></div><pre>&nbsp;</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">195</div></div><pre>        <span class="cm-comment">// GRAPH</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">196</div></div><pre>        <span class="cm-variable">graph</span> = <span class="cm-keyword">new</span> <span class="cm-variable">AmCharts</span>.<span class="cm-property">AmGraph</span>();</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">197</div></div><pre>        <span class="cm-variable">graph</span>.<span class="cm-property">lineColor</span> = <span class="cm-string">"#b6d278"</span>;</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">198</div></div><pre>        <span class="cm-variable">graph</span>.<span class="cm-property">negativeLineColor</span> = <span class="cm-string">"#487dac"</span>; <span class="cm-comment">// this line makes the graph to change color when it drops below 0</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">199</div></div><pre>        <span class="cm-variable">graph</span>.<span class="cm-property">bullet</span> = <span class="cm-string">"round"</span>;</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">200</div></div><pre>        <span class="cm-variable">graph</span>.<span class="cm-property">bulletSize</span> = <span class="cm-number">5</span>;</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">201</div></div><pre>        <span class="cm-variable">graph</span>.<span class="cm-property">connect</span> = <span class="cm-atom">false</span>; <span class="cm-comment">// this makes the graph not to connect data points if data is missing</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">202</div></div><pre>        <span class="cm-variable">graph</span>.<span class="cm-property">lineThickness</span> = <span class="cm-number">2</span>;</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">203</div></div><pre>        <span class="cm-variable">graph</span>.<span class="cm-property">valueField</span> = <span class="cm-string">"value"</span>;</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">204</div></div><pre>        <span class="cm-variable">chart</span>.<span class="cm-property">addGraph</span>(<span class="cm-variable">graph</span>);</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">205</div></div><pre>&nbsp;</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">206</div></div><pre>        <span class="cm-comment">// CURSOR  </span></pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">207</div></div><pre>        <span class="cm-keyword">var</span> <span class="cm-def">chartCursor</span> = <span class="cm-keyword">new</span> <span class="cm-variable">AmCharts</span>.<span class="cm-property">ChartCursor</span>();</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">208</div></div><pre>        <span class="cm-variable-2">chartCursor</span>.<span class="cm-property">cursorAlpha</span> = <span class="cm-number">0</span>;</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">209</div></div><pre>        <span class="cm-variable-2">chartCursor</span>.<span class="cm-property">cursorPosition</span> = <span class="cm-string">"mouse"</span>;</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">210</div></div><pre>        <span class="cm-variable-2">chartCursor</span>.<span class="cm-property">categoryBalloonDateFormat</span> = <span class="cm-string">"YYYY"</span>;</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">211</div></div><pre>        <span class="cm-variable">chart</span>.<span class="cm-property">addChartCursor</span>(<span class="cm-variable-2">chartCursor</span>);</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">212</div></div><pre>&nbsp;</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">213</div></div><pre>        <span class="cm-comment">// WRITE</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">214</div></div><pre>        <span class="cm-variable">chart</span>.<span class="cm-property">write</span>(<span class="cm-string">"tab2"</span>);</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">215</div></div><pre>    });</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">216</div></div><pre>    </pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">217</div></div><pre>    <span class="cm-variable">$</span>(<span class="cm-keyword">function</span>() {</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">218</div></div><pre>      <span class="cm-variable">$</span>( <span class="cm-string">"#tabs"</span> ).<span class="cm-property">tabs</span>({</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">219</div></div><pre>        <span class="cm-property">select</span>: <span class="cm-keyword">function</span>(<span class="cm-def">event</span>, <span class="cm-def">ui</span>) {</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">220</div></div><pre>          <span class="cm-variable">console</span>.<span class="cm-property">log</span>(<span class="cm-string">'Calling chart.invalidateSize()'</span>);</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">221</div></div><pre>          <span class="cm-variable">chart</span>.<span class="cm-property">invalidateSize</span>();</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">222</div></div><pre>        }</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">223</div></div><pre>      });</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">224</div></div><pre>    });</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">225</div></div><pre>&nbsp;</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">226</div></div><pre>&nbsp;</pre></div><div style="position: relative; display: none;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">203</div></div><pre>        <span class="cm-variable">graph</span>.<span class="cm-property">valueField</span> = <span class="cm-string">"value"</span>;</pre></div></div><div class="CodeMirror-cursor" style="left: 75.4115905761719px; top: 834px; height: 15px; display: none;">&nbsp;</div><div class="CodeMirror-cursor CodeMirror-secondarycursor" style="display: none;">&nbsp;</div></div></div></div></div><div style="position: absolute; height: 30px; top: 3918px;">&nbsp;</div><div class="CodeMirror-gutters"><div class="CodeMirror-gutter note-gutter"></div><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 28px;"></div></div></div></div></div></div>
+	<div class="shim"></div>
+</fieldset>
+
+<div class="handler" id="handler_vertical" style="left: 603px;"></div>
+
+<fieldset class="column right" style="width: 49.1930663478781%;">
+	<div class="window top" id="panel_css" data-panel_type="css" style="height: 13.7203166226913%;">
+		<textarea id="id_code_css" rows="10" cols="40" name="code_css" style="display: none;">#tabs { width: 100%: }
+#tabs .tab { height: 300px; }
+p { margin: 10px 0; }
+</textarea>
+		<span class="window_label" style="opacity: 0.8;">CSS</span>
+	<div class="CodeMirror cm-s-default CodeMirror-wrap"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 5px; left: 32px;"><textarea autocorrect="off" autocapitalize="off" tabindex="0" style="position: absolute; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-hscrollbar" style="left: 28px; min-height: 18px;"><div style="height: 1px;"></div></div><div class="CodeMirror-vscrollbar" style="min-width: 18px;"><div style="width: 1px;"></div></div><div class="CodeMirror-scrollbar-filler"></div><div class="CodeMirror-scroll" tabindex="-1"><div style="position: relative; min-height: 100%;"><div class="CodeMirror-sizer" style="margin-left: 28px; min-height: 76px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span class="cm-builtin">#</span><span class="cm-builtin">t</span><span class="cm-builtin">a</span><span class="cm-builtin">b</span><span class="cm-builtin">s</span><span> </span><span>{</span><span> </span><span class="cm-property">w</span><span class="cm-property">i</span><span class="cm-property">d</span><span class="cm-property">t</span><span class="cm-property">h</span><span class="cm-operator">:</span><span> </span><span class="cm-number">1</span><span class="cm-number">0</span><span class="cm-number">0</span><span class="cm-number">%</span><span class="cm-operator">:</span><span> </span><span>}</span></pre></div><div style="position: relative; z-index: 1; display: none;"></div><div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">1</div></div><pre><span class="cm-builtin">#tabs</span> { <span class="cm-property">width</span><span class="cm-operator">:</span> <span class="cm-number">100%</span><span class="cm-operator">:</span> }</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">2</div></div><pre><span class="cm-builtin">#tabs</span> <span class="cm-qualifier">.tab</span> { <span class="cm-property">height</span><span class="cm-operator">:</span> <span class="cm-number">300px</span>; }</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">3</div></div><pre><span class="cm-tag">p</span> { <span class="cm-property">margin</span><span class="cm-operator">:</span> <span class="cm-number">10px</span> <span class="cm-number">0</span>; }</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">4</div></div><pre>&nbsp;</pre></div></div><div class="CodeMirror-cursor" style="left: 4px; top: 1px; height: 15px;">&nbsp;</div><div class="CodeMirror-cursor CodeMirror-secondarycursor" style="display: none;">&nbsp;</div></div></div></div></div><div style="position: absolute; height: 30px; top: 76px;">&nbsp;</div><div class="CodeMirror-gutters"><div class="CodeMirror-gutter note-gutter"></div><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 28px;"></div></div></div></div></div></div>
+	<div class="handler handler_horizontal" style="top: 94px;"></div>
+	<div id="result" class="window bottom" style="height: 86.2796833773087%;">
+      <iframe name="result" sandbox="allow-forms allow-popups allow-scripts allow-same-origin" frameborder="0" src="./Edit fiddle - JSFiddle_files/saved_resource.html"></iframe>
+		<span class="window_label" style="opacity: 0.3;">Result</span>
+	</div>
+	<div class="shim"></div>
+</fieldset>
+
+      </div>
+    </form>
+
+    
+
+<script>
+  TogetherJSConfig_enableAnalytics = true;
+  TogetherJSConfig_cloneClicks = "#run, .toggler";
+  TogetherJSConfig_toolName = "Collaboration"
+</script>
+<script src="./Edit fiddle - JSFiddle_files/togetherjs.js"></script>
+
+  
+
+<span class="CodeMirror-error-tooltip"></span></body></html>

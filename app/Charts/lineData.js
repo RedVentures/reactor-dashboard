@@ -13,9 +13,6 @@ angular.module( 'charts.lineData', [
 
     self.getData = function () {
         lineDataArr = [];
-        /*angular.forEach (lineData || {}, function (value, key) {
-            lineDataArr.push(value);
-        });*/
         for (var index in lineData){
             if (lineData.hasOwnProperty(index)){
                 lineDataArr.push(lineData[index]);
@@ -40,13 +37,11 @@ angular.module( 'charts.lineData', [
                 lineData[date] = {};
                 lineData[date][eventTopic] = 1;
                 lineData[date].date = date;
-        }
-        //console.log('event came in ' + eventTopic +' lineData updated' + time);  
-        //console.log(lineData);      
+        }  
     };
 
     self.getGraphs = function () {
-        console.log(graphsArr);
+        //console.log(graphsArr);
         return graphsArr;
     };
 
@@ -72,21 +67,14 @@ angular.module( 'charts.lineData', [
         if (!lineData[date]){
             lineData[date] = {date: date};
         }
-        //console.log(loadedTopics);
         angular.forEach(loadedTopics, function(eventTopic){
             lineData[date][eventTopic] = 0;
         });
     };
 
-
-
-
-
-
     self.setTime = function () {
         time = new Date();
     };
-
 
     setInterval( function () {
         self.setTime();
@@ -94,9 +82,120 @@ angular.module( 'charts.lineData', [
         console.log('time updated');
     }, 60000);  
 
-    return self;
+    self.getChart = function (){
+        return chart;
+    };
+   
 
+
+
+    var chart = new AmCharts.makeChart("chartdiv", {
+        type: "serial",
+        dataProvider: lineDataArr,
+        pathToImages: "http://www.amcharts.com/lib/images/",
+        legend: {
+                "useGraphSettings": true
+            },
+           categoryField: "date",
+           rotate: false,
+           zoomOutButton: {
+                backgroundColor: '#000000',
+                backgroundAlpha: 0.15
+            },
+        categoryAxis: {
+            minPeriod: "mm",
+            gridPosition: "start",
+            parseDates: true,
+            axisAlpha: 0,
+            fillAlpha: 0.05,
+            fillColor: "#000000",
+            gridAlpha: 0,
+            position: "top"
+           },
+        valueAxes: [{
+            axisAlpha: 0,
+            dashLength: 5,
+            minimum: 0,
+            position: "left",
+            title: "Counts"
+         }],
+        chartScrollbar: {
+            autoGridCount: true,
+            scrollbarHeight: 20,
+            "oppositeAxis":false,
+            "offset":10,
+            "backgroundAlpha": 0,
+            "selectedBackgroundAlpha": 0.1,
+            "selectedBackgroundColor": "#888888",
+            "graphFillAlpha": 0,
+            "graphLineAlpha": 0.5,
+            "selectedGraphFillAlpha": 0,
+            "selectedGraphLineAlpha": 1,
+            "autoGridCount":true,
+            "color":"#AAAAAA",
+            "autoMargins":false
+        }, 
+        mouseWheelZoomEnabled: true,
+        chartCursor: {
+            cursorPosition: "mouse"
+        },
+        addClassNames: true,
+        graphs: graphsArr
+    });
+    chart.validateData();
+
+
+
+ return self;
 }]); 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
