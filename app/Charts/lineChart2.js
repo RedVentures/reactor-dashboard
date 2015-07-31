@@ -5,6 +5,13 @@ angular.module( 'charts.lineChart2', [
 
   .controller ('LineCtrl2', ['$scope','$rootScope', '$timeout', 'Events', 'lineData',
 	function ($scope, $rootScope, $timeout, Events, lineData) { 
+
+
+
+
+
+
+		
 		$scope.chart = lineData.getChart();
         $scope.chart.write("chartdiv");
         $scope.chart.invalidateSize();

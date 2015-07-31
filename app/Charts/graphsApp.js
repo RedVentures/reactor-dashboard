@@ -46,10 +46,12 @@ angular.module('charts.graphsApp', [
 	// PIE AND BAR CHART CONTROLLER 
 	$scope.pieChart = pieChart2Data.getPieChart();
     $scope.pieChart.write("piechartdiv");
+    $scope.pieChart.validateData();
     $scope.pieChart.invalidateSize();
 
 	$scope.barChart = pieChart2Data.getBarChart();
     $scope.barChart.write("barchartdiv");
+    $scope.barChart.validateData();
     $scope.barChart.invalidateSize();
 		
 

@@ -1,0 +1,372 @@
+<style type="text/css">
+	#dashboard-page {
+		padding: 0px;
+        background: #2B2B2B;
+        min-height:1000px;
+	}
+	h4 {
+		color: white;
+	}
+	.row {
+		padding: 15px;
+	}
+	.panel-body {
+		padding: 0px;
+	}
+	
+	#page-navbar {
+		background-color: #fff;
+	}
+	#table-wraper{
+	 	max-height: 320px;
+		overflow-y: scroll;
+		background-color: #2B2B2B;
+		color: white;
+	}
+	.col-md-5 .col-md-6 {
+		padding: 0px;
+	}
+	.container-fluid {
+		padding: 0px;
+	}
+	.panel.panel-head {
+		margin: 0px;
+		background-color: #2B2B2B;
+
+	}
+	#table-navbar {
+		margin: 0px;
+		background-color: #2B2B2B;
+		border-color:  #2B2B2B
+	}
+	#search-input{
+		width: 100px;
+		margin: 0px;
+		background-color: #404040;
+		border-color:  #2B2B2B;
+		color: white;
+	}
+	.red {
+		color: #006dcc;
+	}
+	a.grey {
+		color: #2B2B2B;
+		padding: 0px;
+		font-size: 12px;
+	}
+	div.amcharts-main-div {
+		background-color: #2B2B2B;
+		color: white;
+		overflow-y: scroll;		
+	}
+	div.amChartsLegend.amcharts-legend-div {
+		max-height: 65px;
+		overflow-y: scroll !important;
+		background-color: #2B2B2B;
+		position: center;
+	}
+	text {
+		fill: white;
+	}
+	#no-border {
+		margin: 0px;
+		border: 0px;
+		padding: 0px;
+		border-top-left-radius: 0px;
+		border-top-right-radius: 0px;
+		border-bottom-left-radius: 0px;
+		border-bottom-right-radius: 0px;
+		box-shadow: rgba(0, 0, 0, 0.0470588) 0px 5px 5px 0px;
+	}
+	.table tbody tr:hover td, .table tbody tr:hover th {
+    	color: #2B2B2B;
+    	background-color: #fff;  
+	}
+	ul.nav a:hover { color: white !important; background-color: #2B2B2B;}
+	
+	.table thead tr th a:hover {
+		color: #2B2B2B;
+    	background-color: #fff;
+	}
+	#data-selector {
+    	position: fixed; top:10%; left:25%; right: 25%; bottom:10%;
+    }
+    #modal-exit{
+        float: right;
+    }
+
+	.ghost-button-semi-transparent {
+	  margin: 2px;
+	  float: right;
+	  display: inline-block;
+	  padding: 1px;
+	  height: 25px;
+	  width: 25px;
+	  border-top-left-radius: 10px;
+	  border-top-right-radius: 10px;
+	  border-bottom-left-radius: 10px;
+	  border-bottom-right-radius: 10px;
+	  color: #fff;
+	  /*//background-color: #fff;  fallback */
+	  text-align: center;
+	  outline: none;
+	  text-decoration: none;
+	  transition: background-color 0.2s ease-out,
+	              border-color 0.2s ease-out;
+	}
+	.ghost-button-semi-transparent:hover,
+	.ghost-button-semi-transparent:active {
+	  color: #636363; 
+	  background-color: #fff;
+	  transition: background-color 0.3s ease-in,        
+	}
+
+	.sidebar {
+		height: 100vh;
+		width: 100px;
+		position: absolute;
+		top: 0;
+		left: 0;
+		background: #9d9d9d;
+
+	}
+	.content {
+		box-sizing: border-box;
+		width: 100%;
+	}
+	.sidebar.close {
+		width: 50px;
+	}
+	.sidebar.close.ng-hide + .content {
+		padding-left:  100px;
+	}
+	.sidebar.close + .content {
+		padding-left:  50px;
+	}
+	
+	
+	.container {
+		width: 100%;
+		position: relative;
+		margin-top: 70px;
+	}
+
+	.chart-options {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+	}
+
+
+	body {
+		margin: 0;
+		padding: 0;
+	}
+
+</style>
+
+
+
+<body>
+<div id="dashboard-page" class="container" ng-controller="chartsCtrl">
+	<!-- PageHeader -->
+		<div class="sidebar open" ng-show="sidebarToggle">
+			<div ng-show="sidebarToggle">
+				<ul class="nav nav-stacked">
+					<li> <a ng-show="sidebarToggle" ng-click="changeSidebarToogle()"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> </a> </li>
+					<li><a ng-click="changeDashEventToggle()" class="red"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> Events </a></li>
+					<li><a ng-click="changeDashChartsToggle()" class="red"><span class="glyphicon glyphicon-signal" aria-hidden="true"></span> Graphs</a>
+						<li><a ng-click="changeBarChartsToggle()" class="grey"> Bar Chart</a></li>
+						<li><a ng-click="changePieChartsToggle()" class="grey"> Pie Chart</a></li>
+						<li><a ng-click="changeLineChartsToggle()" class="grey"> Line Chart</a></li>
+					</li>
+					<li><a href="" class="red" data-toggle="modal" data-target="#data-selector"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Data</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="sidebar close" ng-show="!sidebarToggle">
+			<div>
+				<ul class="nav nav-stacked">
+					<li> <a ng-show="!sidebarToggle" ng-click="changeSidebarToogle()"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a> </li>
+					<li><a ng-click="changeDashEventToggle()" class="red"><span class="glyphicon glyphicon-list" aria-hidden="true"></span></a></li> 
+					<li><a ng-click="changeDashChartsToggle()" class="red"><span class="glyphicon glyphicon-signal" aria-hidden="true"></span></a></li>
+					<li><a href="" class="red" data-toggle="modal" data-target="#data-selector"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a></li>
+				</ul>
+			</div>
+		</div>
+
+		<!-- EventBar -->
+		<div  class="content"> 
+			<div class="col-md-6" ng-show="dashEventToggle" ng-controller="sqlCtrl">
+			<!-- EventBar 
+				<div class="container">
+				    <div class="row">
+				        <div class='col-sm-6'>
+				            <div class="form-group">
+				                <div class='input-group date' id='datetimepicker2'>
+				                    <input type='text' class="form-control" />
+				                    <span class="input-group-addon">
+				                        <span class="glyphicon glyphicon-calendar"></span>
+				                    </span>
+				                </div>
+				            </div>
+				        </div>
+				        <script type="text/javascript">
+				            $(function () {
+				                $('#datetimepicker2').datetimepicker({
+				                    locale: 'ru'
+				                });
+				            });
+				        </script>
+				    </div>
+				</div>
+-->	
+				  	<div id="table-navbar" class="navbar navbar-default"> 
+				  	<h4>Events  {{eventsSQLcount}}
+			            <nav class="btn btn-md btn" ng-click="changeSearchToggle()"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> </nav>
+			          
+			          
+			            <nav class="btn btn-sm btn" ng-click="changeFilterToggle()"><span class="glyphicon glyphicon-filter" aria-hidden="true"></span></nav>
+			            
+			          
+			            <nav class="btn btn-sm btn" ng-click="changeViewToggle()"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></nav>
+			              
+			            <div  class="pull-center" ng-show="!searchToogle"><input id="search-input" type="text" class="form-control input-sm" ng-model="event_search"></div>
+
+			            <select ng-show="!filterToogle" ng-model="orderProp">
+			                <option value="DateTime" size="12">Date</option>
+			                <option value="Topic">Topic</option>
+			                <option value="Agent">Agent</option>
+			                <option value="Company">Company ID</option>
+             			</select>
+
+			            <select ng-show="!viewToogle" ng-model="nmbrEvents">
+		                  <option value="1000">View All</option>
+		                  <option value="5">5</option>
+		                  <option value="-5">-5</option>
+		                  <option value="10">10</option>
+		                  <option value="30">30</option>
+		                </select>
+
+			        </h4>
+			        </div>
+
+			        <div  id="table-wraper" class="container-fluid">
+			           
+			              <table id="main_table" class="table table-hover table-responsive">
+			                <div>
+			                  <thead>
+			                     <tr role="row">
+			                      <th> <a class="btn btn-md" ng-click="orderProp=meta.utc">Time Stamp  <span class="glyphicon glyphicon-time" aria-hidden="true"> </span></a></th>
+			                      <th> <a class="btn btn-md" ng-click="orderProp=meta.topic">Topic  <span class="glyphicon glyphicon-tag" aria-hidden="true"> </span></a></th>
+			                      <th> <a class="btn btn-md" ng-click="orderProp=meta.agent">Agent  <span class="glyphicon glyphicon-user" aria-hidden="true"> </span></a></th>
+			                      <th> <a class="btn btn-md" ng-click="orderProp=reactorMeta.company">CompanyID  <span class="glyphicon glyphicon-briefcase" aria-hidden="true"> </span></a></th>
+			                    </tr>
+			                  </thead>
+			                </div>
+			                <tbody >
+			                  <tr  ng-repeat="event in eventsSQL | filter: event_search | orderBy: orderProp | limitTo: nmbrEvents track by $index">
+			                    <td class="text-center">{{event.Data.meta.utc}}</td>
+			                    <td class>{{event.Topic}}</td>
+			                    <th class>{{event.Agent}}</th>
+			                    <th class>{{event.Company}}</th>
+			                  </tr>
+			                </tbody>
+			              </table>
+			            
+			          </div>
+
+		</div>
+
+		<div class="col-md-6" ng-show="dashChartsToggle">
+		<!-- ChartsWraper-->
+			<div class="charts-wrapper">
+				<div class="container-fluid">
+					
+						<div class="row"> 
+							<div id="no-border" class="col-sm-6" ng-show="dashBarToggle">
+									<div style="min-height:350px" id="SQLbarchartdiv"></div> 
+									<div  class="chart-options">
+											<a class="ghost-button-semi-transparent" ng-click="barSettingsChange()"> <span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a>
+											<a class="ghost-button-semi-transparent" ng-show="barSettings" ng-click="refreshSQLBarData()"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></a>
+									</div>
+										
+								</div>
+
+							<div id="no-border" class="col-sm-6" ng-show="dashPieToggle">
+									<div style="min-height:350px; max-height:350px" id="SQLpiechartdiv"></div> 
+										<div class="chart-options">
+											<a class="ghost-button-semi-transparent" ng-click="pieSettingsChange()"> <span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a>
+											<a class="ghost-button-semi-transparent" ng-show="pieSettings" ng-click="refreshSQLPieData()"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></a>
+										</div>	
+							</div>
+						</div>	
+					
+				</div>
+			</div>
+		</div>
+							<div id="no-border" class="col-md-12"  ng-show="dashChartsToggle && dashLineToggle"> 	
+									<div id="SQLlinechartdiv" style="min-height: 350px; max-height:350px"></div>
+								    <div class="chart-options">
+											<a class="ghost-button-semi-transparent" ng-click="lineSettingsChange()"> <span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a>
+											<a class="ghost-button-semi-transparent" ng-show="lineSettings" ng-click="refreshSQLLineData()"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></a>
+												<a class="ghost-button-semi-transparent" ng-show="showTime" ng-click="setMaxInterval('M')">M</a> 
+												<a class="ghost-button-semi-transparent" ng-show="showTime" ng-click="setMaxInterval('W')">W</a> 
+												<a class="ghost-button-semi-transparent" ng-show="showTime" ng-click="setMaxInterval('D')">D</a> 
+												<a class="ghost-button-semi-transparent" ng-show="showTime" ng-click="setMaxInterval('hr')">hr</a> 
+												<a class="ghost-button-semi-transparent" ng-show="showTime" ng-click="setMaxInterval('30')">30</a> 
+												<a class="ghost-button-semi-transparent" ng-show="showTime" ng-click="setMaxInterval('5')">5</a>	
+											<a class="ghost-button-semi-transparent" ng-show="lineSettings" ng-click="showTimeChange()"><span class="glyphicon glyphicon-time" aria-hidden="true"></span></a>
+									</div>
+								
+							</div>
+	</div>
+</div>
+
+</body>
+
+
+
+
+
+<div class="modal fade" id="data-selector" role="dialog">
+	<div class="modal-content" ng-controller="modalCtrl">
+		<div class="modal-header">
+		<h3 class="red">  Select Type of Data
+			<a id="modal-exit" class="btn btn-lg" data-dismiss="modal"> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+			<a id="modal-exit" class="btn btn-lg" ng-click="refreshData()"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></a>
+			<a id="modal-exit" class="btn btn-lg" ng-click="filter()"><span class="glyphicon glyphicon-filter" aria-hidden="true"></span></a>
+
+   		</h3> 
+    	</div>
+    		
+	    <div class="container" id="no-border">
+		    	<div class="col-md-3">
+		    		 <h3> Agent <span class="glyphicon glyphicon-user" aria-hidden="true"> </span></h3> 
+		    		 	<form name="agentForm">
+		    				<div class="checkbox" ng-repeat="agent in loadedAgents"> 
+								<label><input type="checkbox" ng-model="agentCheckbox[agent]"> {{agent}}</label> 
+							</div>
+						</form>
+		    	</div>
+		    	<div class="col-md-3">
+		    		<h3> Company <span class="glyphicon glyphicon-home" aria-hidden="true"></span> </h3>
+		    			<form name="companyForm">
+		    				<div class="checkbox" ng-repeat="company in loadedCompanies">
+								<label><input type="checkbox" ng-model="companyCheckbox[company]"> {{company}}</label> 
+							</div>
+						</form>
+		    			
+		    	</div>
+		    	<div class="col-md-3">
+		    		<h3> Topic <span class="glyphicon glyphicon-tag" aria-hidden="true"> </span></h3>
+		    			<form name="topicForm">
+		    				<div class="checkbox" ng-repeat="topic in loadedTopics">
+								<label><input type="checkbox" ng-model="topicCheckbox[topic]">  {{topic}}</label>
+							</div>
+		    			</form>
+		    	</div>
+	    </div>
+	</div>
+</div>
+

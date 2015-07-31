@@ -3,7 +3,7 @@ angular.module( 'charts.lineData', [
 	])
 
   .factory('lineData', ['Events', '$rootScope', function (Events, $rootScope) {
-	var self = [];
+	var self = {};
 
     var time = new Date();
     var lineData = {};
@@ -26,18 +26,20 @@ angular.module( 'charts.lineData', [
 	    var currEvent = Events.getCurrentEvent();
         var eventTopic = Events.getTopic(currEvent);
         var date = time;
-        if (lineData[date]) {
-            if (lineData[date][eventTopic]) {
-                    lineData[date][eventTopic]++;
+        if (lineData[eventTopic]) {
+            if (lineData[eventTopic][date]) {
+                    lineData[eventTopic][date].value++;
                 }
                 else {
-                    lineData[date][eventTopic] = 1;
+                    lineData[eventTopic][date] = {};
+                    lineData[eventTopic][date].value = 1;
                 }
         } else {
-                lineData[date] = {};
-                lineData[date][eventTopic] = 1;
-                lineData[date].date = date;
-        }  
+                lineData[eventTopic] = {};
+                lineData[eventTopic][date] = {};
+                lineData[eventTopic][date].value = 1;
+                lineData[eventTopic][date].value = date;
+        } 
     };
 
     self.getGraphs = function () {
@@ -46,11 +48,11 @@ angular.module( 'charts.lineData', [
     };
 
     self.updateGraphs = function(eventTopic) {
-        var g = new AmCharts.AmGraph();
-            g.id = eventTopic;
-            g.bullet = "round";
+        var g = {};
             g.title = eventTopic;
-            g.valueField = eventTopic;
+            g.fieldMappings = [{fromField: "value", toField: "value"}];
+            g.dataProvider = lineData[eventTopic];
+            g.categoryField = "date";
             graphsArr.push(g);
     };
 
@@ -63,12 +65,8 @@ angular.module( 'charts.lineData', [
 
     self.SetDefaults = function() {
         var date = time;
-
-        if (!lineData[date]){
-            lineData[date] = {date: date};
-        }
         angular.forEach(loadedTopics, function(eventTopic){
-            lineData[date][eventTopic] = 0;
+            lineData[eventTopic][date].count = 0;
         });
     };
 
@@ -89,58 +87,74 @@ angular.module( 'charts.lineData', [
 
 
 
-    var chart = new AmCharts.makeChart("chartdiv", {
-        type: "serial",
-        dataProvider: lineDataArr,
-        pathToImages: "http://www.amcharts.com/lib/images/",
-        legend: {
-                "useGraphSettings": true
-            },
-           categoryField: "date",
-           rotate: false,
-           zoomOutButton: {
-                backgroundColor: '#000000',
-                backgroundAlpha: 0.15
-            },
-        categoryAxis: {
-            minPeriod: "mm",
-            gridPosition: "start",
-            parseDates: true,
-            axisAlpha: 0,
-            fillAlpha: 0.05,
-            fillColor: "#000000",
-            gridAlpha: 0,
-            position: "top"
-           },
-        valueAxes: [{
-            axisAlpha: 0,
-            dashLength: 5,
-            minimum: 0,
-            position: "left",
-            title: "Counts"
-         }],
-        chartScrollbar: {
-            autoGridCount: true,
-            scrollbarHeight: 20,
-            "oppositeAxis":false,
-            "offset":10,
-            "backgroundAlpha": 0,
-            "selectedBackgroundAlpha": 0.1,
-            "selectedBackgroundColor": "#888888",
-            "graphFillAlpha": 0,
-            "graphLineAlpha": 0.5,
-            "selectedGraphFillAlpha": 0,
-            "selectedGraphLineAlpha": 1,
-            "autoGridCount":true,
-            "color":"#AAAAAA",
-            "autoMargins":false
-        }, 
-        mouseWheelZoomEnabled: true,
-        chartCursor: {
-            cursorPosition: "mouse"
+    var chart = new AmCharts.AmSerialChart("chartdiv", {
+        type: "stock",
+
+
+        dataSetSelector: {
+            position: "left"
         },
-        addClassNames: true,
-        graphs: graphsArr
+
+        dataSets: graphsArr,
+        pathToImages: "http://www.amcharts.com/lib/images/",
+        panels: [{
+            legend: {},
+
+            stockGraphs: [{
+                id: "graph1",
+                valueField: "value",
+                type: "column",
+                title: "MyGraph",
+                fillAlphas: 1
+            }]
+        }],
+
+        panelsSettings: {
+            startDuration: 1
+        },
+
+        categoryAxesSettings: {
+            dashLength: 5
+        },
+
+        valueAxesSettings: {
+            dashLength: 5
+        },
+
+        chartScrollbarSettings: {
+            graphType: "line"
+        },
+
+        chartCursorSettings: {
+            valueBalloonsEnabled: true
+        },
+
+        periodSelector: {
+            periods: [{
+                period: "DD",
+                count: 1,
+                label: "1 day"
+            }, {
+                period: "DD",
+                selected: true,
+                count: 5,
+                label: "5 days"
+            }, {
+                period: "MM",
+                count: 1,
+                label: "1 month"
+            }, {
+                period: "YYYY",
+                count: 1,
+                label: "1 year"
+            }, {
+                period: "YTD",
+                label: "YTD"
+            }, {
+                period: "MAX",
+                label: "MAX"
+            }]
+        }
     });
     chart.validateData();
 

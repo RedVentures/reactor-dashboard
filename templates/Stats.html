@@ -53,20 +53,11 @@
     position: relative;
     background-color: #fff;
   }
-  .list-group { margin-bottom: 0; }
-  .panel-title { display:inline }
-  .label-info { float: right; }
-  li.list-group-item {border-radius: 0;border: 0;border-top: 1px solid #ddd;}
-  li.list-group-item:hover { background-color: #eee; }
-  .mic-info { color: #666666;font-size: 11px; overflow: scroll; }
-  .action { margin-top:5px; }
-  .comment-text { font-size: 14px; }
-
-  #data-selector {
-    position: fixed; top:10%; left:25%; right: 25%; bottom:10%;
-  }
   #modal-exit{
       float: right;
+  }
+  #data-selector {
+    position: fixed; top:10%; left:25%; right: 25%; bottom:10%;
   }
   #no-border {
     margin: 0px;
@@ -78,6 +69,14 @@
     border-bottom-right-radius: 0px;
     box-shadow: rgba(0, 0, 0, 0.0470588) 0px 5px 5px 0px;
   }
+  .list-group { margin-bottom: 0; }
+  .panel-title { display:inline }
+  .label-info { float: right; }
+  li.list-group-item {border-radius: 0;border: 0;border-top: 1px solid #ddd;}
+  li.list-group-item:hover { background-color: #eee; }
+  .mic-info { color: #666666;font-size: 11px; overflow: scroll; }
+  .action { margin-top:5px; }
+  .comment-text { font-size: 14px; }
 
 </style>
 
@@ -86,23 +85,8 @@
 
   <div class="jumbotron">
     <div class="text-center">
-      <h2>SQL Event Stream <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></h2>
-       
-        <h4>Events  {{eventsSQLcount}}
-          <div ng-show="!searchToogle"><input type="text" class="form-control" ng-model="event_search" placeholder="Search for..."></div>
-          <select ng-show="!filterToogle" ng-model="orderProp">
-              <option value="DateTime" size="12">Date</option>
-              <option value="Topic">Topic</option>
-              <option value="Agent">Agent</option>
-              <option value="Company">Company ID</option>
-          </select>
-          <select ng-show="!viewToogle" ng-model="nmbrEvents">
-            <option value="{{eventsSQLcount}}">View All</option>
-            <option value="5">5</option>
-            <option value="-5">-5</option>
-            <option value="10">10</option>
-            <option value="30">30</option>
-          </select>
+      <h2>Stats  <span class="glyphicon glyphicon-stats" aria-hidden="true"></span></h2>
+        <h4>Average events per minute and other paramerters.
         </h4>
     </div>
   </div>
@@ -114,9 +98,6 @@
       <div ng-show="sidebarToggle">
         <ul class="nav nav-stacked">
           <li> <a ng-show="sidebarToggle" ng-click="changeSidebarToogle()"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> </a> </li>
-          <li><a ng-click="changeSearchToggle()"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search</a></li>
-          <li><a ng-click="changeFilterToggle()"><span class="glyphicon glyphicon-filter" aria-hidden="true"></span> Filter</a></li>
-          <li><a ng-click="changeViewToggle()"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> View</a></li>
           <li><a href="" class="red" data-toggle="modal" data-target="#data-selector"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Data</a></li>
         </ul>
       </div>
@@ -125,59 +106,40 @@
       <div>
         <ul class="nav nav-stacked">
           <li> <a ng-show="!sidebarToggle" ng-click="changeSidebarToogle()"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a> </li>
-          <li><a ng-click="changeSearchToggle()"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></li>
-          <li><a ng-click="changeFilterToggle()"><span class="glyphicon glyphicon-filter" aria-hidden="true"></span></a></li>
-          <li><a ng-click="changeViewToggle()"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a></li>
           <li><a href="" class="red" data-toggle="modal" data-target="#data-selector"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a></li>
         </ul>
       </div>
     </div>
   		<!-- Tables -->
-
     <div class="content">
       <ul class="list-group">
-          <li class="list-group-item" ng-repeat="event in eventsSQL | filter: event_search | orderBy: orderProp | limitTo: nmbrEvents track by $index">
-            <div class="row">
-              <div class="col-xs-2 col-md-1">
-                <img src="/img/reactor-logo.png" class="img-circle img-responsive" alt="" />
-              </div>
-              <div class="col-xs-10 col-md-4">
-                <div>
-                  <div class="mic-info">
-                  </div>
-                </div>
-                <div class="comment-text">
-                    Date: <a href="" class="red">{{event.DateTime}} <span class="glyphicon glyphicon-time" aria-hidden="true"></span></a> <br>
-                    Agent: <a href="" class="red">{{event.Agent}} <span class="glyphicon glyphicon-user" aria-hidden="true"></span></a> <br>
-                    Company: <a href="" class="red">{{event.Company}} <span class="glyphicon glyphicon-home" aria-hidden="true"></span></a> <br>
-                    Topic: <a href="" class="red">{{event.Topic}} <span class="glyphicon glyphicon-tag" aria-hidden="true"></span></a> <br>
-                    Data:  <a href="" class="red"> <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
-                </div>
-              </div>
-              <div class="col-md-7">
-                <div>
-                  <div class="mic-info">
-                    <!--  <script>
-                    var 
-                    document.getElementById("test").appendChild(
-                      renderjson({ hello: [1,2,3,4], there: { a:1, b:2, c:["hello", null] } })
-                  );
-                    </script>-->
-                {{event.Data}} 
-                  </div>
-                </div>
+        <li class="list-group-item" ng-repeat="eventTopic in statsInfo">
+          
+          <div class="row">
+            <div class="col-md-2"> 
+            </div>
+            <div class="col-md-2"> <!-- Image -->
+              <img src="/img/reactor-logo.png" class="img-circle img-responsive" alt="" />
+            </div>
+            <div class="col-md-4">  <!-- Topic -->
+              <h4> <span class="glyphicon glyphicon-tag" aria-hidden="true"></span> {{eventTopic.topic}} </h4>
+              Total events count {{eventTopic.count}}
+            </div>
+            <div class="col-md-2">  <!-- Percentage -->
+              <h2> {{eventTopic.average}} </h2>
+              <div class="mic-info">
+                  Average events per minute.
               </div>
             </div>
+          </div>
+
         </li>
       </ul>
 
-
     </div> 
   </div>  
+</div>
 
-
-  </div>
-  
 <div class="modal fade" id="data-selector" role="dialog">
   <div class="modal-content" ng-controller="modalCtrl">
     <div class="modal-header">
