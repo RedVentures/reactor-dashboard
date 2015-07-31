@@ -1,0 +1,182 @@
+<style>
+  .row {
+    margin-right: 0;
+    margin-left: 0;
+  }
+   #shadow {
+      box-shadow: 0px -.5px .5px black;
+      background-color: #fff;
+      min-height: 1000px;
+
+   }
+   #table-container {
+      padding: 10px;
+      
+   }
+   #table-navbar {
+      padding: 10px;
+   }
+  .jumbotron {
+      margin-bottom: 0px;
+     }
+  .form-control{
+    margin: auto;
+    width: 20%;
+  }
+  .sidebar {
+    height: 100vh;
+    width: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #eee;
+
+  }
+  .content {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100vh;
+    overflow-y: scroll;
+  }
+
+  .sidebar.close {
+    width: 50px;
+  }
+  .sidebar.close.ng-hide + .content {
+    padding-left:  100px;
+  }
+  .sidebar.close + .content {
+    padding-left:  50px;
+  }
+  .container {
+    width: 100%;
+    position: relative;
+    background-color: #fff;
+  }
+  #modal-exit{
+      float: right;
+  }
+  #data-selector {
+    position: fixed; top:10%; left:25%; right: 25%; bottom:10%;
+  }
+  #no-border {
+    margin: 0px;
+    border: 0px;
+    padding: 0px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    box-shadow: rgba(0, 0, 0, 0.0470588) 0px 5px 5px 0px;
+  }
+  .list-group { margin-bottom: 0; }
+  .panel-title { display:inline }
+  .label-info { float: right; }
+  li.list-group-item {border-radius: 0;border: 0;border-top: 1px solid #ddd;}
+  li.list-group-item:hover { background-color: #eee; }
+  .mic-info { color: #666666;font-size: 11px; overflow: scroll; }
+  .action { margin-top:5px; }
+  .comment-text { font-size: 14px; }
+
+</style>
+
+<div id="main-wrapper" ng-controller="sqlCtrl">
+
+
+  <div class="jumbotron">
+    <div class="text-center">
+      <h2>Stats  <span class="glyphicon glyphicon-stats" aria-hidden="true"></span></h2>
+        <h4>Average events per minute and other paramerters.
+        </h4>
+    </div>
+  </div>
+
+
+  <div class="container">
+
+    <div class="sidebar open" ng-show="sidebarToggle">
+      <div ng-show="sidebarToggle">
+        <ul class="nav nav-stacked">
+          <li> <a ng-show="sidebarToggle" ng-click="changeSidebarToogle()"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> </a> </li>
+          <li><a href="" class="red" data-toggle="modal" data-target="#data-selector"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Data</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="sidebar close" ng-show="!sidebarToggle">
+      <div>
+        <ul class="nav nav-stacked">
+          <li> <a ng-show="!sidebarToggle" ng-click="changeSidebarToogle()"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a> </li>
+          <li><a href="" class="red" data-toggle="modal" data-target="#data-selector"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a></li>
+        </ul>
+      </div>
+    </div>
+  		<!-- Tables -->
+    <div class="content">
+      <ul class="list-group">
+        <li class="list-group-item" ng-repeat="eventTopic in statsInfo">
+          
+          <div class="row">
+            <div class="col-md-2"> 
+            </div>
+            <div class="col-md-2"> <!-- Image -->
+              <img src="/img/reactor-logo.png" class="img-circle img-responsive" alt="" />
+            </div>
+            <div class="col-md-4">  <!-- Topic -->
+              <h4> <span class="glyphicon glyphicon-tag" aria-hidden="true"></span> {{eventTopic.topic}} </h4>
+              Total events count {{eventTopic.count}}
+            </div>
+            <div class="col-md-2">  <!-- Percentage -->
+              <h2> {{eventTopic.average}} </h2>
+              <div class="mic-info">
+                  Average events per minute.
+              </div>
+            </div>
+          </div>
+
+        </li>
+      </ul>
+
+    </div> 
+  </div>  
+</div>
+
+<div class="modal fade" id="data-selector" role="dialog">
+  <div class="modal-content" ng-controller="modalCtrl">
+    <div class="modal-header">
+    <h3 class="red">  Select Type of Data
+      <a id="modal-exit" class="btn btn-lg" data-dismiss="modal"> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+      <a id="modal-exit" class="btn btn-lg" ng-click="refreshData()"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></a>
+      <a id="modal-exit" class="btn btn-lg" ng-click="filter()"><span class="glyphicon glyphicon-filter" aria-hidden="true"></span></a>
+
+      </h3> 
+      </div>
+        
+      <div class="container" id="no-border">
+          <div class="col-md-3">
+             <h3> Agent <span class="glyphicon glyphicon-user" aria-hidden="true"> </span></h3> 
+              <form name="agentForm">
+                <div class="checkbox" ng-repeat="agent in loadedAgents"> 
+                <label><input type="checkbox" ng-model="agentCheckbox[agent]"> {{agent}}</label> 
+              </div>
+            </form>
+          </div>
+          <div class="col-md-3">
+            <h3> Company <span class="glyphicon glyphicon-home" aria-hidden="true"></span> </h3>
+              <form name="companyForm">
+                <div class="checkbox" ng-repeat="company in loadedCompanies">
+                <label><input type="checkbox" ng-model="companyCheckbox[company]"> {{company}}</label> 
+              </div>
+            </form>
+              
+          </div>
+          <div class="col-md-3">
+            <h3> Topic <span class="glyphicon glyphicon-tag" aria-hidden="true"> </span></h3>
+              <form name="topicForm">
+                <div class="checkbox" ng-repeat="topic in loadedTopics">
+                <label><input type="checkbox" ng-model="topicCheckbox[topic]">  {{topic}}</label>
+              </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>

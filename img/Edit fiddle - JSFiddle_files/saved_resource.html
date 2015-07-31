@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<!-- saved from url=(0045)http://fiddle.jshell.net/amcharts/mZ2Gq/show/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <title> - jsFiddle demo by amcharts</title>
+  
+  <script type="text/javascript" src="jquery-1.8.3.js"></script>
+  
+  <link rel="stylesheet" type="text/css" href="normalize(1).css">
+  
+  
+  <link rel="stylesheet" type="text/css" href="result-light.css">
+  
+    
+      <script type="text/javascript" src="jquery-ui.min.js"></script>
+    
+  
+    
+      <link rel="stylesheet" type="text/css" href="jquery-ui.css">
+    
+  
+    
+      <script type="text/javascript" src="amcharts.js"></script>
+    
+  
+    
+      <script type="text/javascript" src="serial.js"></script>
+    
+  
+  <style type="text/css">
+    #tabs { width: 100%: }
+#tabs .tab { height: 300px; }
+p { margin: 10px 0; }
+
+  </style>
+  
+
+
+<script type="text/javascript">//<![CDATA[ 
+
+var chart;
+    var graph;
+
+    // note, some of tada points don't have value field
+    var chartData = [{
+        year: new Date(1950, 0),
+        value: -0.307
+    }, {
+        year: new Date(1951, 0),
+        value: -0.168
+    }, {
+        year: new Date(1952, 0),
+        value: -0.073
+    }, {
+        year: new Date(1953, 0),
+        value: -0.027
+    }, {
+        year: new Date(1954, 0),
+        value: -0.251
+    }, {
+        year: new Date(1955, 0),
+        value: -0.281
+    }, {
+        year: new Date(1956, 0),
+        value: -0.348
+    }, {
+        year: new Date(1957, 0),
+        value: -0.074
+    }, {
+        year: new Date(1958, 0),
+        value: -0.011
+    }, {
+        year: new Date(1959, 0),
+        value: -0.074
+    }, {
+        year: new Date(1960, 0),
+        value: -0.124
+    }, {
+        year: new Date(1961, 0),
+        value: -0.024
+    }, {
+        year: new Date(1962, 0),
+        value: -0.022
+    }, {
+        year: new Date(1963, 0),
+        value: 0.000
+    }, {
+        year: new Date(1964, 0),
+        value: -0.296
+    }, {
+        year: new Date(1965, 0),
+        value: -0.217
+    }, {
+        year: new Date(1966, 0),
+        value: -0.147
+    }, {
+        year: new Date(1967, 0)
+    }, {
+        year: new Date(1968, 0)
+    }, {
+        year: new Date(1969, 0)
+    }, {
+        year: new Date(1970, 0)
+    }, {
+        year: new Date(1971, 0),
+        value: -0.190
+    }, {
+        year: new Date(1972, 0),
+        value: -0.056
+    }, {
+        year: new Date(1973, 0),
+        value: 0.077
+    }, {
+        year: new Date(1974, 0),
+        value: -0.213
+    }, {
+        year: new Date(1975, 0),
+        value: -0.170
+    }, {
+        year: new Date(1976, 0),
+        value: -0.254
+    }, {
+        year: new Date(1977, 0),
+        value: 0.019
+    }, {
+        year: new Date(1978, 0),
+        value: -0.063
+    }, {
+        year: new Date(1979, 0),
+        value: 0.050
+    }, {
+        year: new Date(1980, 0),
+        value: 0.077
+    }, {
+        year: new Date(1981, 0),
+        value: 0.120
+    }, {
+        year: new Date(1982, 0),
+        value: 0.011
+    }, {
+        year: new Date(1983, 0),
+        value: 0.177
+    }, {
+        year: new Date(1984, 0)
+    }, {
+        year: new Date(1985, 0)
+    }, {
+        year: new Date(1986, 0)
+    }, {
+        year: new Date(1987, 0)
+    }, {
+        year: new Date(1988, 0)
+    }, {
+        year: new Date(1989, 0),
+        value: 0.104
+    }, {
+        year: new Date(1990, 0),
+        value: 0.255
+    }, {
+        year: new Date(1991, 0),
+        value: 0.210
+    }, {
+        year: new Date(1992, 0),
+        value: 0.065
+    }, {
+        year: new Date(1993, 0),
+        value: 0.110
+    }, {
+        year: new Date(1994, 0),
+        value: 0.172
+    }, {
+        year: new Date(1995, 0),
+        value: 0.269
+    }, {
+        year: new Date(1996, 0),
+        value: 0.141
+    }, {
+        year: new Date(1997, 0),
+        value: 0.353
+    }, {
+        year: new Date(1998, 0),
+        value: 0.548
+    }, {
+        year: new Date(1999, 0),
+        value: 0.298
+    }, {
+        year: new Date(2000, 0),
+        value: 0.267
+    }, {
+        year: new Date(2001, 0),
+        value: 0.411
+    }, {
+        year: new Date(2002, 0),
+        value: 0.462
+    }, {
+        year: new Date(2003, 0),
+        value: 0.470
+    }, {
+        year: new Date(2004, 0),
+        value: 0.445
+    }, {
+        year: new Date(2005, 0),
+        value: 0.470
+    }];
+
+
+    AmCharts.ready(function () {
+        // SERIAL CHART
+        chart = new AmCharts.AmSerialChart();
+        chart.pathToImages = "amcharts/images/";
+        chart.marginTop = 0;
+        chart.marginRight = 0;
+        chart.dataProvider = chartData;
+        chart.categoryField = "year";
+        chart.zoomOutButton = {
+            backgroundColor: '#000000',
+            backgroundAlpha: 0.15
+        };
+
+        // AXES
+        // category
+        var categoryAxis = chart.categoryAxis;
+        categoryAxis.parseDates = true; // as our data is date-based, we set parseDates to true
+        categoryAxis.minPeriod = "YYYY"; // our data is yearly, so we set minPeriod to YYYY
+        categoryAxis.dashLength = 1;
+        categoryAxis.axisColor = "#DADADA";
+
+        // value
+        var valueAxis = new AmCharts.ValueAxis();
+        valueAxis.axisAlpha = 0;
+        valueAxis.dashLength = 1;
+        valueAxis.inside = true;
+        chart.addValueAxis(valueAxis);
+
+        // GRAPH
+        graph = new AmCharts.AmGraph();
+        graph.lineColor = "#b6d278";
+        graph.negativeLineColor = "#487dac"; // this line makes the graph to change color when it drops below 0
+        graph.bullet = "round";
+        graph.bulletSize = 5;
+        graph.connect = false; // this makes the graph not to connect data points if data is missing
+        graph.lineThickness = 2;
+        graph.valueField = "value";
+        chart.addGraph(graph);
+
+        // CURSOR  
+        var chartCursor = new AmCharts.ChartCursor();
+        chartCursor.cursorAlpha = 0;
+        chartCursor.cursorPosition = "mouse";
+        chartCursor.categoryBalloonDateFormat = "YYYY";
+        chart.addChartCursor(chartCursor);
+
+        // WRITE
+        chart.write("tab2");
+    });
+    
+    $(function() {
+      $( "#tabs" ).tabs({
+        select: function(event, ui) {
+          console.log('Calling chart.invalidateSize()');
+          chart.invalidateSize();
+        }
+      });
+    });
+
+
+//]]>  
+
+</script>
+
+
+</head>
+<body>
+    <div id="tabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
+    <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
+      <li class="ui-state-default ui-corner-top"><a href="http://fiddle.jshell.net/amcharts/mZ2Gq/show/#tab1">Tab 1</a></li>
+      <li class="ui-state-default ui-corner-top ui-tabs-selected ui-state-active ui-state-focus"><a href="http://fiddle.jshell.net/amcharts/mZ2Gq/show/#tab2">Chart Tab</a></li>
+      <li class="ui-state-default ui-corner-top"><a href="http://fiddle.jshell.net/amcharts/mZ2Gq/show/#tab3">Tab 3</a></li>
+    </ul>
+    <div id="tab1" class="tab ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide">
+        <p>This is just some empty tab. Click "Chart Tab" to display the chart.</p>
+        <p>Once you do jQuery UI Tabs "select" event is executed and chart.invalidateSize() is called</p>
+        <p>Make sure you're running at least 2.7.6 version of amCharts</p>
+    </div>
+    <div id="tab2" class="tab ui-tabs-panel ui-widget-content ui-corner-bottom" style="overflow: hidden; text-align: left;"><div class="amcharts-main-div" style="position: relative;"><div class="amcharts-chart-div" style="overflow: hidden; position: relative; text-align: left; cursor: default; width: 528px; height: 300px;"><svg version="1.1" style="position: absolute; width: 528px; height: 300px; left: -0.140625px; top: -0.21875px;"><desc>JavaScript chart by amCharts 3.14.5</desc><g><path cs="100,100" d="M0.5,0.5 L527.5,0.5 L527.5,299.5 L0.5,299.5 Z" fill="#FFFFFF" stroke="#000000" fill-opacity="0" stroke-width="1" stroke-opacity="0"></path><path cs="100,100" d="M0.5,0.5 L526.5,0.5 L526.5,269.5 L0.5,269.5 L0.5,0.5 Z" fill="#FFFFFF" stroke="#000000" fill-opacity="0" stroke-width="1" stroke-opacity="0" transform="translate(1,0)"></path></g><g><g transform="translate(1,0)"><g><path cs="100,100" d="M0.5,0.5 L0.5,5.5" fill="none" stroke-width="1" stroke-opacity="1" stroke="#DADADA" transform="translate(0,269)"></path><path cs="100,100" d="M0.5,269.5 L0.5,269.5 L0.5,0.5" fill="none" stroke-width="1" stroke-dasharray="1" stroke-opacity="0.15" stroke="#000000"></path></g><g><path cs="100,100" d="M94.5,0.5 L94.5,5.5" fill="none" stroke-width="1" stroke-opacity="1" stroke="#DADADA" transform="translate(0,269)"></path><path cs="100,100" d="M94.5,269.5 L94.5,269.5 L94.5,0.5" fill="none" stroke-width="1" stroke-dasharray="1" stroke-opacity="0.15" stroke="#000000"></path></g><g><path cs="100,100" d="M188.5,0.5 L188.5,5.5" fill="none" stroke-width="1" stroke-opacity="1" stroke="#DADADA" transform="translate(0,269)"></path><path cs="100,100" d="M188.5,269.5 L188.5,269.5 L188.5,0.5" fill="none" stroke-width="1" stroke-dasharray="1" stroke-opacity="0.15" stroke="#000000"></path></g><g><path cs="100,100" d="M282.5,0.5 L282.5,5.5" fill="none" stroke-width="1" stroke-opacity="1" stroke="#DADADA" transform="translate(0,269)"></path><path cs="100,100" d="M282.5,269.5 L282.5,269.5 L282.5,0.5" fill="none" stroke-width="1" stroke-dasharray="1" stroke-opacity="0.15" stroke="#000000"></path></g><g><path cs="100,100" d="M376.5,0.5 L376.5,5.5" fill="none" stroke-width="1" stroke-opacity="1" stroke="#DADADA" transform="translate(0,269)"></path><path cs="100,100" d="M376.5,269.5 L376.5,269.5 L376.5,0.5" fill="none" stroke-width="1" stroke-dasharray="1" stroke-opacity="0.15" stroke="#000000"></path></g><g><path cs="100,100" d="M470.5,0.5 L470.5,5.5" fill="none" stroke-width="1" stroke-opacity="1" stroke="#DADADA" transform="translate(0,269)"></path><path cs="100,100" d="M470.5,269.5 L470.5,269.5 L470.5,0.5" fill="none" stroke-width="1" stroke-dasharray="1" stroke-opacity="0.15" stroke="#000000"></path></g></g><g transform="translate(1,0)" visibility="visible"><g><path cs="100,100" d="M0.5,269.5 L0.5,269.5 L526.5,269.5" fill="none" stroke-width="1" stroke-dasharray="1" stroke-opacity="0.15" stroke="#000000"></path></g><g><path cs="100,100" d="M0.5,215.5 L0.5,215.5 L526.5,215.5" fill="none" stroke-width="1" stroke-dasharray="1" stroke-opacity="0.15" stroke="#000000"></path></g><g><path cs="100,100" d="M0.5,161.5 L0.5,161.5 L526.5,161.5" fill="none" stroke-width="1" stroke-dasharray="1" stroke-opacity="0.15" stroke="#000000"></path></g><g><path cs="100,100" d="M0.5,108.5 L0.5,108.5 L526.5,108.5" fill="none" stroke-width="1" stroke-dasharray="1" stroke-opacity="0.15" stroke="#000000"></path></g><g><path cs="100,100" d="M0.5,54.5 L0.5,54.5 L526.5,54.5" fill="none" stroke-width="1" stroke-dasharray="1" stroke-opacity="0.15" stroke="#000000"></path></g><g><path cs="100,100" d="M0.5,0.5 L0.5,0.5 L526.5,0.5" fill="none" stroke-width="1" stroke-dasharray="1" stroke-opacity="0.15" stroke="#000000"></path></g></g></g><g></g><g></g><g></g><g></g><g><g transform="translate(1,0)"><g></g><g clip-path="url(#AmChartsEl-56)"><path cs="100,100" d="M5.5,244.5 L14.5,207.5 L23.5,181.5 L33.5,169.5 L42.5,229.5 L52.5,237.5 L61.5,255.5 L70.5,181.5 L80.5,164.5 L89.5,181.5 L99.5,195.5 L108.5,168.5 L117.5,167.5 L127.5,161.5 L136.5,241.5 L146.5,220.5 L155.5,201.5 M0,0 L0,0" fill="none" stroke-width="2" stroke-opacity="1" stroke="#487dac"></path></g><g clip-path="url(#AmChartsEl-55)"><path cs="100,100" d="M5.5,244.5 L14.5,207.5 L23.5,181.5 L33.5,169.5 L42.5,229.5 L52.5,237.5 L61.5,255.5 L70.5,181.5 L80.5,164.5 L89.5,181.5 L99.5,195.5 L108.5,168.5 L117.5,167.5 L127.5,161.5 L136.5,241.5 L146.5,220.5 L155.5,201.5 M0,0 L0,0" fill="none" stroke-width="2" stroke-opacity="1" stroke="#b6d278"></path></g><clippath id="AmChartsEl-55"><rect x="0" y="0" width="527" height="162" rx="0" ry="0" stroke-width="0"></rect></clippath><clippath id="AmChartsEl-56"><rect x="0" y="162" width="527" height="109" rx="0" ry="0" stroke-width="0"></rect></clippath><g clip-path="url(#AmChartsEl-58)"><path cs="100,100" d="M202.5,213.5 L211.5,176.5 L221.5,141.5 L230.5,219.5 L240.5,207.5 L249.5,230.5 L258.5,156.5 L268.5,178.5 L277.5,148.5 L286.5,141.5 L296.5,129.5 L305.5,158.5 L315.5,114.5 M0,0 L0,0" fill="none" stroke-width="2" stroke-opacity="1" stroke="#487dac"></path></g><g clip-path="url(#AmChartsEl-57)"><path cs="100,100" d="M202.5,213.5 L211.5,176.5 L221.5,141.5 L230.5,219.5 L240.5,207.5 L249.5,230.5 L258.5,156.5 L268.5,178.5 L277.5,148.5 L286.5,141.5 L296.5,129.5 L305.5,158.5 L315.5,114.5 M0,0 L0,0" fill="none" stroke-width="2" stroke-opacity="1" stroke="#b6d278"></path></g><clippath id="AmChartsEl-57"><rect x="0" y="0" width="527" height="162" rx="0" ry="0" stroke-width="0"></rect></clippath><clippath id="AmChartsEl-58"><rect x="0" y="162" width="527" height="109" rx="0" ry="0" stroke-width="0"></rect></clippath><g clip-path="url(#AmChartsEl-60)"><path cs="100,100" d="M371.5,133.5 L380.5,93.5 L390.5,105.5 L399.5,144.5 L409.5,132.5 L418.5,115.5 L427.5,89.5 L437.5,123.5 L446.5,66.5 L456.5,14.5 L465.5,81.5 L474.5,90.5 L484.5,51.5 L493.5,37.5 L503.5,35.5 L512.5,42.5 L521.5,35.5 M0,0 L0,0" fill="none" stroke-width="2" stroke-opacity="1" stroke="#487dac"></path></g><g clip-path="url(#AmChartsEl-59)"><path cs="100,100" d="M371.5,133.5 L380.5,93.5 L390.5,105.5 L399.5,144.5 L409.5,132.5 L418.5,115.5 L427.5,89.5 L437.5,123.5 L446.5,66.5 L456.5,14.5 L465.5,81.5 L474.5,90.5 L484.5,51.5 L493.5,37.5 L503.5,35.5 L512.5,42.5 L521.5,35.5 M0,0 L0,0" fill="none" stroke-width="2" stroke-opacity="1" stroke="#b6d278"></path></g><clippath id="AmChartsEl-59"><rect x="0" y="0" width="527" height="162" rx="0" ry="0" stroke-width="0"></rect></clippath><clippath id="AmChartsEl-60"><rect x="0" y="162" width="527" height="109" rx="0" ry="0" stroke-width="0"></rect></clippath></g></g><g></g><g><path cs="100,100" d="M0.5,161.5 L526.5,161.5 L526.5,161.5" fill="none" stroke-width="1" stroke-dasharray="1" stroke-opacity="0.3" stroke="#000000" transform="translate(1,0)"></path><g><path cs="100,100" d="M0.5,0.5 L526.5,0.5" fill="none" stroke-width="1" stroke-opacity="1" stroke="#DADADA" transform="translate(1,269)"></path></g><g><path cs="100,100" d="M0.5,0.5 L0.5,269.5" fill="none" stroke-width="1" stroke-opacity="0" stroke="#000000" transform="translate(1,0)" visibility="visible"></path></g></g><g><g transform="translate(1,0)" visibility="hidden"><path cs="100,100" d="M0.5,0.5 L0.5,0.5 L0.5,269.5" fill="none" stroke-width="1" stroke-opacity="0" stroke="#CC0000" visibility="hidden" style="pointer-events: none;"></path></g></g><g></g><g><g transform="translate(1,0)"><circle r="2.5" cx="0" cy="0" fill="#487dac" stroke="#487dac" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(5,244)"></circle><circle r="2.5" cx="0" cy="0" fill="#487dac" stroke="#487dac" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(14,207)"></circle><circle r="2.5" cx="0" cy="0" fill="#487dac" stroke="#487dac" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(23,181) scale(1)"></circle><circle r="2.5" cx="0" cy="0" fill="#487dac" stroke="#487dac" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(33,169)"></circle><circle r="2.5" cx="0" cy="0" fill="#487dac" stroke="#487dac" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(42,229)"></circle><circle r="2.5" cx="0" cy="0" fill="#487dac" stroke="#487dac" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(52,237)"></circle><circle r="2.5" cx="0" cy="0" fill="#487dac" stroke="#487dac" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(61,255)"></circle><circle r="2.5" cx="0" cy="0" fill="#487dac" stroke="#487dac" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(70,181)"></circle><circle r="2.5" cx="0" cy="0" fill="#487dac" stroke="#487dac" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(80,164)"></circle><circle r="2.5" cx="0" cy="0" fill="#487dac" stroke="#487dac" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(89,181)"></circle><circle r="2.5" cx="0" cy="0" fill="#487dac" stroke="#487dac" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(99,195)"></circle><circle r="2.5" cx="0" cy="0" fill="#487dac" stroke="#487dac" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(108,168)"></circle><circle r="2.5" cx="0" cy="0" fill="#487dac" stroke="#487dac" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(117,167)"></circle><circle r="2.5" cx="0" cy="0" fill="#b6d278" stroke="#b6d278" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(127,161)"></circle><circle r="2.5" cx="0" cy="0" fill="#487dac" stroke="#487dac" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(136,241)"></circle><circle r="2.5" cx="0" cy="0" fill="#487dac" stroke="#487dac" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(146,220)"></circle><circle r="2.5" cx="0" cy="0" fill="#487dac" stroke="#487dac" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(155,201)"></circle><circle r="2.5" cx="0" cy="0" fill="#487dac" stroke="#487dac" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(202,213)"></circle><circle r="2.5" cx="0" cy="0" fill="#487dac" stroke="#487dac" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(211,176)"></circle><circle r="2.5" cx="0" cy="0" fill="#b6d278" stroke="#b6d278" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(221,141)"></circle><circle r="2.5" cx="0" cy="0" fill="#487dac" stroke="#487dac" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(230,219)"></circle><circle r="2.5" cx="0" cy="0" fill="#487dac" stroke="#487dac" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(240,207)"></circle><circle r="2.5" cx="0" cy="0" fill="#487dac" stroke="#487dac" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(249,230)"></circle><circle r="2.5" cx="0" cy="0" fill="#b6d278" stroke="#b6d278" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(258,156)"></circle><circle r="2.5" cx="0" cy="0" fill="#487dac" stroke="#487dac" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(268,178)"></circle><circle r="2.5" cx="0" cy="0" fill="#b6d278" stroke="#b6d278" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(277,148)"></circle><circle r="2.5" cx="0" cy="0" fill="#b6d278" stroke="#b6d278" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(286,141)"></circle><circle r="2.5" cx="0" cy="0" fill="#b6d278" stroke="#b6d278" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(296,129)"></circle><circle r="2.5" cx="0" cy="0" fill="#b6d278" stroke="#b6d278" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(305,158)"></circle><circle r="2.5" cx="0" cy="0" fill="#b6d278" stroke="#b6d278" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(315,114)"></circle><circle r="2.5" cx="0" cy="0" fill="#b6d278" stroke="#b6d278" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(371,133)"></circle><circle r="2.5" cx="0" cy="0" fill="#b6d278" stroke="#b6d278" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(380,93)"></circle><circle r="2.5" cx="0" cy="0" fill="#b6d278" stroke="#b6d278" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(390,105)"></circle><circle r="2.5" cx="0" cy="0" fill="#b6d278" stroke="#b6d278" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(399,144)"></circle><circle r="2.5" cx="0" cy="0" fill="#b6d278" stroke="#b6d278" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(409,132)"></circle><circle r="2.5" cx="0" cy="0" fill="#b6d278" stroke="#b6d278" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(418,115)"></circle><circle r="2.5" cx="0" cy="0" fill="#b6d278" stroke="#b6d278" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(427,89)"></circle><circle r="2.5" cx="0" cy="0" fill="#b6d278" stroke="#b6d278" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(437,123)"></circle><circle r="2.5" cx="0" cy="0" fill="#b6d278" stroke="#b6d278" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(446,66)"></circle><circle r="2.5" cx="0" cy="0" fill="#b6d278" stroke="#b6d278" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(456,14)"></circle><circle r="2.5" cx="0" cy="0" fill="#b6d278" stroke="#b6d278" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(465,81)"></circle><circle r="2.5" cx="0" cy="0" fill="#b6d278" stroke="#b6d278" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(474,90)"></circle><circle r="2.5" cx="0" cy="0" fill="#b6d278" stroke="#b6d278" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(484,51)"></circle><circle r="2.5" cx="0" cy="0" fill="#b6d278" stroke="#b6d278" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(493,37)"></circle><circle r="2.5" cx="0" cy="0" fill="#b6d278" stroke="#b6d278" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(503,35)"></circle><circle r="2.5" cx="0" cy="0" fill="#b6d278" stroke="#b6d278" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(512,42)"></circle><circle r="2.5" cx="0" cy="0" fill="#b6d278" stroke="#b6d278" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(521,35)"></circle></g></g><g><g transform="translate(1,0)"><text y="6" fill="#000000" font-family="Verdana" font-size="11" opacity="1" text-anchor="start" transform="translate(3,282)"><tspan y="6" x="0" style="font-size: 11px;">1950</tspan></text><text y="6" fill="#000000" font-family="Verdana" font-size="11" opacity="1" text-anchor="start" transform="translate(97,282)"><tspan y="6" x="0" style="font-size: 11px;">1960</tspan></text><text y="6" fill="#000000" font-family="Verdana" font-size="11" opacity="1" text-anchor="start" transform="translate(191,282)"><tspan y="6" x="0" style="font-size: 11px;">1970</tspan></text><text y="6" fill="#000000" font-family="Verdana" font-size="11" opacity="1" text-anchor="start" transform="translate(285,282)"><tspan y="6" x="0" style="font-size: 11px;">1980</tspan></text><text y="6" fill="#000000" font-family="Verdana" font-size="11" opacity="1" text-anchor="start" transform="translate(379,282)"><tspan y="6" x="0" style="font-size: 11px;">1990</tspan></text><text y="6" fill="#000000" font-family="Verdana" font-size="11" opacity="1" text-anchor="start" transform="translate(473,282)"><tspan y="6" x="0" style="font-size: 11px;">2000</tspan></text></g><g transform="translate(1,0)" visibility="visible"><text y="6" fill="#000000" font-family="Verdana" font-size="11" opacity="1" text-anchor="start" transform="translate(9,261)"><tspan y="6" x="0" style="font-size: 11px;">-0.4</tspan></text><text y="6" fill="#000000" font-family="Verdana" font-size="11" opacity="1" text-anchor="start" transform="translate(9,207)"><tspan y="6" x="0" style="font-size: 11px;">-0.2</tspan></text><text y="6" fill="#000000" font-family="Verdana" font-size="11" opacity="1" text-anchor="start" transform="translate(9,153)"><tspan y="6" x="0" style="font-size: 11px;">0.0</tspan></text><text y="6" fill="#000000" font-family="Verdana" font-size="11" opacity="1" text-anchor="start" transform="translate(9,100)"><tspan y="6" x="0" style="font-size: 11px;">0.2</tspan></text><text y="6" fill="#000000" font-family="Verdana" font-size="11" opacity="1" text-anchor="start" transform="translate(9,46)"><tspan y="6" x="0" style="font-size: 11px;">0.4</tspan></text></g></g><g><g></g></g><g></g><g></g><g></g></svg><a href="http://www.amcharts.com/javascript-charts/" title="JavaScript charts" style="position: absolute; text-decoration: none; color: rgb(0, 0, 0); font-family: Verdana; font-size: 11px; opacity: 0.7; display: block; left: 6px; top: 5px;">JS chart by amCharts</a></div></div></div>
+    <div id="tab3" class="tab ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide">This is too an empty tab</div>
+  </div>
+
+  
+
+
+
+
+
+</body></html>

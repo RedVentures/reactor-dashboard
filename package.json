@@ -1,0 +1,32 @@
+{
+  "name": "reactor-dashboard",
+  "version": "0.0.1",
+  "description": "reactor dashboard ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jdiazort/reactor-dashboard.git"
+  },
+  "keywords": [
+    "dashboard",
+    "rabbbitmq",
+    "primus",
+    "web-sockets",
+    "angular"
+  ],
+  "author": "Jorge Diaz-Ortiz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jdiazort/reactor-dashboard/issues"
+  },
+  "homepage": "https://github.com/jdiazort/reactor-dashboard#readme",
+  "dependencies": {
+    "amqplib": "^0.3.2",
+    "express": "^4.13.0",
+    "mysql": "felixge/node-mysql",
+    "primus": "^3.1.1"
+  }
+}

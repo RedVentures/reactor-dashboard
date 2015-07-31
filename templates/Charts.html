@@ -1,0 +1,206 @@
+<style>
+     #page-container {
+      box-shadow: 0px -.5px .5px black;
+      padding:15px 15px 15px 15px;
+      background-color: #fff;
+      min-height: 1000px;
+     }
+     #barModal {
+      position: fixed; top:10%; left:10%; right: 10%; bottom:10%;
+     }
+     #modal-exit{
+          float: right;
+        }
+     .jumbotron {
+      margin-bottom: 0px;
+     }
+    .sidebar {
+      height: 100vh;
+      width: 100px;
+      position: absolute;
+      left: 0;
+      background: #eee;
+    }
+    .content {
+      box-sizing: border-box;
+      width: 100%;
+      height: 100vh;
+      overflow-y: scroll;
+    }
+
+    .sidebar.close {
+      width: 50px;
+    }
+    .sidebar.close.ng-hide + .content {
+      padding-left:  100px;
+    }
+    .sidebar.close + .content {
+      padding-left:  50px;
+    }
+    .container {
+      width: 100%;
+      position: relative;
+      background-color: #fff;
+    }
+
+    .gohst-chart {
+    }
+    .gohst-chart:hover {
+      background: #eee;
+      box-shadow: rgba(0, 0, 0, 0.0470588) 0px 5px 5px 0px;
+    }
+
+    #data-selector {
+      position: fixed; top:10%; left:25%; right: 25%; bottom:10%;
+    }
+    #modal-exit{
+        float: right;
+    }
+    #no-border {
+      margin: 0px;
+      border: 0px;
+      padding: 0px;
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px;
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+      box-shadow: rgba(0, 0, 0, 0.0470588) 0px 5px 5px 0px;
+    }
+</style>
+
+<div ng-controller="chartsCtrl"> <!-- PAGE WRAP -->
+
+
+   <div class="jumbotron">
+    <div class="text-center">
+      <h2>Charts <span class="glyphicon glyphicon-signal" aria-hidden="true"></span></h2>
+      <h4>Under contrusction...</h4> 
+      <div class="btn-group">
+        <a href="" class="btn btn-sm btn-primary" ng-click="changeBarToggle()"><span class="glyphicon glyphicon-signal" aria-hidden="true"></span> Bar Graph</a>
+        <a href="" class="btn btn-sm btn-default" ng-click="changePieToggle()"> <span class="glyphicon glyphicon-signal" aria-hidden="true"></span> Pie Chart</a>
+        <a href="" class="btn btn-sm btn-primary" ng-click="changeLineToggle()"><span class="glyphicon glyphicon-signal" aria-hidden="true"></span> Line Chart</a>
+      </div>
+    </div>
+   </div>
+
+
+  <div id="container">
+    <div class="sidebar open" ng-show="sidebarToggle">
+      <div ng-show="sidebarToggle">
+        <ul class="nav nav-stacked">
+          <li> <a ng-show="sidebarToggle" ng-click="changeSidebarToogle()"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> </a> </li>
+          <li><a href="" class="red" data-toggle="modal" data-target="#data-selector"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Data</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="sidebar close" ng-show="!sidebarToggle">
+      <div>
+        <ul class="nav nav-stacked">
+          <li> <a ng-show="!sidebarToggle" ng-click="changeSidebarToogle()"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a> </li>
+          <li><a href="" class="red" data-toggle="modal" data-target="#data-selector"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="col-md-6 gohst-chart">
+            <div style="height:500px" id="SQLbarchartdiv"></div> 
+      </div>
+
+      <div class="col-md-6 gohst-chart">
+            <div style="height:500px" id="SQLpiechartdiv"></div>
+      </div>
+      <div class= "col-md-12 gohst-chart">
+            <div id="SQLlinechartdiv" style="min-height: 500px;"></div>
+            <div class="chart-options">
+              <a class="ghost-button-semi-transparent" ng-click="lineSettingsChange()"> <span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a>
+              <a class="ghost-button-semi-transparent" ng-show="lineSettings" ng-click="refreshSQLLineData()"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></a>
+                <a class="ghost-button-semi-transparent" ng-show="showTime" ng-click="setMaxInterval('M')">M</a> 
+                <a class="ghost-button-semi-transparent" ng-show="showTime" ng-click="setMaxInterval('W')">W</a> 
+                <a class="ghost-button-semi-transparent" ng-show="showTime" ng-click="setMaxInterval('D')">D</a> 
+                <a class="ghost-button-semi-transparent" ng-show="showTime" ng-click="setMaxInterval('hr')">hr</a> 
+                <a class="ghost-button-semi-transparent" ng-show="showTime" ng-click="setMaxInterval('30')">30</a> 
+                <a class="ghost-button-semi-transparent" ng-show="showTime" ng-click="setMaxInterval('5')">5</a>  
+              <a class="ghost-button-semi-transparent" ng-show="lineSettings" ng-click="showTimeChange()"><span class="glyphicon glyphicon-time" aria-hidden="true"></span></a>
+          </div>
+      </div>
+    </div>
+
+</div>
+
+
+<!-- MODALS 
+
+  <div class="modal fade" id="barModal" role="dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="color: blue; font-size: 120%; text-transform: uppercase">Bar Graph
+      <a id="modal-exit" class="btn btn-md btn-danger" data-dismiss="modal"> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+      </div>
+      <div class="modal-body">
+        <div style="height:500px" id="barchartdiv"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="pieModal" role="dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="color: blue; font-size: 120%; text-transform: uppercase">Pie Chart
+      <a id="modal-exit" class="btn btn-md btn-danger" data-dismiss="modal"> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+      </div>tr
+      <div class="modal-body">
+        <div style="height:500px" id="piechartdiv"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="lineModal" role="dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="color: blue; font-size: 120%; text-transform: uppercase">Line Chart
+      <a id="modal-exit" class="btn btn-md btn-damger" data-dismiss="modal"> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+      </div>
+      <div class="modal-body">
+        <div id="chartdiv"></div>
+      </div>
+    </div>
+  </div> -->
+
+<div class="modal fade" id="data-selector" role="dialog">
+  <div class="modal-content" ng-controller="modalCtrl">
+    <div class="modal-header">
+    <h3 class="red">  Select Type of Data
+      <a id="modal-exit" class="btn btn-lg" data-dismiss="modal"> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+      <a id="modal-exit" class="btn btn-lg" ng-click="refreshData()"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></a>
+      <a id="modal-exit" class="btn btn-lg" ng-click="filter()"><span class="glyphicon glyphicon-filter" aria-hidden="true"></span></a>
+
+      </h3> 
+      </div>
+        
+      <div class="container" id="no-border">
+          <div class="col-md-3">
+             <h3> Agent <span class="glyphicon glyphicon-user" aria-hidden="true"> </span></h3> 
+              <form name="agentForm">
+                <div class="checkbox" ng-repeat="agent in loadedAgents"> 
+                <label><input type="checkbox" ng-model="agentCheckbox[agent]"> {{agent}}</label> 
+              </div>
+            </form>
+          </div>
+          <div class="col-md-3">
+            <h3> Company <span class="glyphicon glyphicon-home" aria-hidden="true"></span> </h3>
+              <form name="companyForm">
+                <div class="checkbox" ng-repeat="company in loadedCompanies">
+                <label><input type="checkbox" ng-model="companyCheckbox[company]"> {{company}}</label> 
+              </div>
+            </form>
+              
+          </div>
+          <div class="col-md-3">
+            <h3> Topic <span class="glyphicon glyphicon-tag" aria-hidden="true"> </span></h3>
+              <form name="topicForm">
+                <div class="checkbox" ng-repeat="topic in loadedTopics">
+                <label><input type="checkbox" ng-model="topicCheckbox[topic]">  {{topic}}</label>
+              </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>

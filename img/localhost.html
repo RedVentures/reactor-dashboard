@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<!-- saved from url=(0024)http://localhost:9000/#/ -->
+<html lang="en" ng-app="reactorDashboardApp" class="ng-scope"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}</style>
+    <meta name="viewport" charset="utf-8" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://localhost:9000/bootstrap-table-examples/assets/bootstrap-table/src/bootstrap-table.css">
+    <link rel="stylesheet" href="http://localhost:9000/bootstrap-table-examples/assets/examples.css">
+
+    <script type="text/javascript" src="./localhost_files/angular.js"></script>
+    <script type="text/javascript" src="./localhost_files/angular-route.js"></script>
+
+    <!-- AmCharts Library references -->
+    <script type="text/javascript" src="./localhost_files/amcharts.js"></script>
+    <script type="text/javascript" src="./localhost_files/serial.js"></script>
+    <!-- amChartsDirective -->
+    <script type="text/javascript" src="./localhost_files/amChartsDirective.js"></script>
+
+        <!-- Including all App Dependencies-->
+
+    <script src="./localhost_files/events.js"></script>
+    <script src="./localhost_files/lineData.js"></script>
+    <script src="./localhost_files/barData.js"></script>
+    <script src="./localhost_files/barGraph.js"></script>
+    <script src="./localhost_files/pieChart.js"></script>
+    <script src="./localhost_files/chartsApp.js"></script>
+  
+    <script src="./localhost_files/lineChart.js"></script>
+
+
+    <script src="./localhost_files/primus.js"></script>
+
+    <script src="./localhost_files/Chart.min.js"></script> <!-- charts.js library -->
+    <script src="./localhost_files/angular-chart.js"></script>
+
+    <script type="/bower_components/bootstrap-table/src/bootstrap-table.js"></script>
+
+
+    
+
+	<script src="./localhost_files/jquery.min.js"></script> <!-- jQuery library -->
+	<script src="./localhost_files/jquery-ui.min.js"></script>
+	<script src="./localhost_files/bootstrap.min.js"></script> <!-- Latest compiled JavaScript -->
+    <script type="text/javascript" src="./localhost_files/app.js"></script>
+
+
+    <style>
+
+    	/* PAGE BACKGROUND */
+      body {
+    		background: #C0C0C0;
+        padding-top: 45px;
+    	}
+        /* Title */
+      	.col-md-10 {
+      		background: #fff;
+      	}
+        .main-head {
+          background: #fff;
+        }
+        .reactor-logo {
+          height: 50px;
+          float: right;
+          background: #fff;
+        }
+        #page-wrapper {
+          padding-right: 210px;
+          padding-left:0px;
+          
+        }
+
+        .col-md-2 {
+        
+        }
+        .subTitle{
+          background: #fff;
+        }
+
+
+
+    </style>
+
+
+
+
+  </head>
+  <body ng-controller="MainController" class="ng-scope">
+ 
+   <!-- Title -->
+  	<nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <a href="http://localhost:9000/#/Home" class="navbar-brand">Dashboard Temaplate</a>
+        <button class="navbar-togle" id="reactor-button" data-toggle="collapse" data-target=".navHeaderCollapse"> 
+        <!--   <img class="reactor-logo" src="/img/reactor-logo.png"> -->
+        </button>
+
+        <div class="collapse navbar-collapse navHeaderCollapse">
+          <ul class="nav navbar-nav nav-bar-right">
+            <li><a href="http://localhost:9000/#/Home" class="navbar-brand">Home</a></li>
+            <li><a href="http://localhost:9000/#/Graphs" class="navbar-brand">Graphs</a></li>
+            <li><a href="http://localhost:9000/#/Charts" class="navbar-brand">Charts</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+
+ 	 	<p class="subTitle">Under contrusction...</p> 
+	
+
+  <div id="page-wrapper" class="open"> 	
+	<!-- MAIN ROW -->
+		<div class="col-md-2">
+		  <h3>Dropdowns</h3>
+		  <p>Which Events Page do you want to go?</p>
+		  <div class="dropdown">
+		    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Events
+		    <span class="caret"></span></button>
+		    <ul class="dropdown-menu">
+		      <li><a href="http://localhost:9000/#/Home">Home&gt;</a></li>
+		      <li class="divider"></li>
+		      <li><a href="http://localhost:9000/#/Graphs">Graphs</a></li>
+		      <li><a href="http://localhost:9000/#/Charts">Charts</a></li>
+		    </ul>
+		  </div>
+		  <div class="sidebar-footer col-xs-12"> 2015 Red Ventures</div>
+		</div>
+
+		<div class="col-md-10">
+			<!-- ngView: undefined --><ng-view class="ng-scope"><style class="ng-scope">
+  select {
+    height:30px;
+    width: 350px;
+    font-size:14px;
+}
+</style>
+
+
+ <div class="container-fluid ng-scope">
+    <h3>Home: Events List</h3>
+    <p>Under contrusction...</p> 
+  </div>
+
+
+
+		<!-- Tables -->
+<div class="row ng-scope">
+	<div class="container-fluid" style="background-color:lavender;">
+		<div class="eventList">
+		  		<div class="eventList-header">Total Events List
+		  			<span ng-model="count" class="ng-pristine ng-untouched ng-valid ng-binding">0</span>
+				  </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="pull-center"><input type="text" class="form-control input-sm ng-valid ng-dirty ng-valid-parse ng-touched" ng-model="event_search"></div>
+          </div>
+          <div class="col-sm-6">
+            <select ng-model="orderProp" class="ng-valid ng-dirty ng-valid-parse ng-touched">
+              <option value="meta.utc" size="12">Date</option>
+              <option value="meta.topic">Topic</option>
+              <option value="meta.agent">Agent</option>
+              <option value="reactorMeta.company"></option>
+            </select>
+          </div>
+				  
+			  </div>
+
+        <div class="flexible-table-container">
+          
+            <div class="fixed-table-header" style="margin-right: 0px">
+                </div><table id="main_table" class="table  table-hover JColResizer table-striped table-bordered dataTable no-footer" cellspacing="0" role="grid" aria-describedby="example_info" border="1" style="width:100%">
+              <thead>
+                   <tr role="row">
+                    <th class="sorting" tableindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Time Stamp: active to sort column ascencding" data-sortable="true">Time Stamp</th>
+                    <th class="sorting" tableindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Topic: active to sort column descendinz" aria-sort="ascending" data-sortable="true">Topic</th>
+                    <th class="sorting" tableindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Agent: active to sort column ascencding" data-sortable="true">Agent</th>
+                    <th class="sorting" tableindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="CompanyID: active to sort column ascencding" data-sortable="true">CompanyID</th>
+                    <th class="sorting" tableindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="UserID: active to sort column ascencding" data-sortable="true">UserID</th>
+                  </tr>
+                </thead>
+              
+              <tbody>
+                <!-- ngRepeat: event in events | filter: event_search -->
+              </tbody>
+            </table>
+        </div>
+
+      <div class="row">
+        <div class="col-sm-5">
+          <div class="dataTables_info" id="example_info" role="status" arial-live="polite"> </div>
+        </div>
+        <div class="col-sm-7">
+          <div class="dataTables_paginate paging_simple_numbers" id="example_paginate">
+            <ul class="pagination">
+            </ul>
+          </div>
+        </div>
+      </div>  
+    </div>  
+  </div>
+</div> 
+
+
+</ng-view>
+		</div>
+	
+
+  </div><!-- End Page Wrapper -->
+  
+</body></html>

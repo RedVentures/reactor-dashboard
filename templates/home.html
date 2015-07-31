@@ -1,0 +1,111 @@
+<style>
+  #main-wrapper {
+    padding-right: 10%;
+    padding-left: 10%;
+  }
+  .row {
+    margin-right: 0;
+    margin-left: 0;
+  }
+   #shadow {
+      box-shadow: 0px -.5px .5px black;
+      background-color: #fff;
+      min-height: 1000px;
+
+   }
+   #table-container {
+      padding: 10px;
+      
+   }
+   #table-navbar {
+      padding: 10px;
+   }
+  .jumbotron {
+      margin-bottom: 0px;
+     }
+</style>
+
+<div id="main-wrapper" >
+
+ <div class="jumbotron">
+  <div class="container text-center">
+    <h1>Home: Events List <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></h1>
+    <p>Under contrusction...</p> 
+    <div class="btn-group">
+      <a href="https://www.redventures.com/" class="btn btn-lg btn-danger">Red Ventures</a>
+      <a href="https://test-reactor-login.redventures.net/login/loginSelection" class="btn btn-lg btn-default">Reactor Test Env.</a>
+    </div>
+  </div>
+</div>
+
+
+
+		<!-- Tables -->
+<div class="row">
+
+	<div id="shadow" class="container-fluid">
+
+		<div class="eventList">
+
+		  	<div class="eventList-header" style="color: blue; font-size: 120%">Total Events Registered 
+		  			<span ng-model="count">{{events.length}}</span>
+				</div>
+
+        <div id="table-navbar" class="navbar navbar-default">
+          
+            <nav class="btn btn-lg btn-default" ng-click="changeSearchToggle()"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> </nav>
+            <div class="pull-center" ng-show="!searchToogle"><input type="text" class="form-control input-sm" ng-model="event_search"></div>
+          
+          
+            <nav class="btn btn-lg btn-default" ng-click="changeFilterToggle()"><span class="glyphicon glyphicon-filter" aria-hidden="true"></span></nav>
+            <select ng-show="!filterToogle" ng-model="orderProp">
+              <option value="meta.utc" size="12">Date</option>
+              <option value="meta.topic">Topic</option>
+              <option value="meta.agent">Agent</option>
+              <option value="reactorMeta.company">Company ID</option>
+            </select>
+          
+            <nav class="btn btn-lg btn-default" ng-click="changeViewToggle()"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></nav>
+              <select ng-show="!viewToogle" ng-model="nmbrEvents">
+                <option value="1000">View All</option>
+                <option value="5">5</option>
+                <option value="-5">-5</option>
+                <option value="10">10</option>
+                <option value="30">30</option>
+              </select>
+          
+			  </div>
+
+
+        <div id="table-container" class="container-fluid">
+          <div class="well">
+            <table id="main_table" class="table table-hover table-responsive">
+              <div style="margin-right: 0px">
+                <thead>
+                   <tr role="row">
+                    <th> <a class="btn btn-md" ng-click="orderProp=meta.utc">Time Stamp  <span class="glyphicon glyphicon-time" aria-hidden="true"> </span></a></th>
+                    <th> <a class="btn btn-md" ng-click="orderProp=meta.topic">Topic  <span class="glyphicon glyphicon-tag" aria-hidden="true"> </span></a></th>
+                    <th> <a class="btn btn-md" ng-click="orderProp=meta.agent">Agent  <span class="glyphicon glyphicon-user" aria-hidden="true"> </span></a></th>
+                    <th> <a class="btn btn-md" ng-click="orderProp=reactorMeta.company">CompanyID  <span class="glyphicon glyphicon-briefcase" aria-hidden="true"> </span></a></th>
+                  </tr>
+                </thead>
+              </div>
+              <tbody>
+                <tr  ng-repeat="event in events | filter: event_search | orderBy: orderProp | limitTo:nmbrEvents track by $index">
+                  <td class="text-center" style="background-color: PaleGreen;">{{event.meta.utc}}</td>
+                  <td class>{{event.meta.topic}}</td>
+                  <th class="sorting_1">{{event.meta.agent.username}}</th>
+                  <th class>{{event.reactorMeta.company}}</th>
+                </tr>
+              </tbody>
+            </table>
+          </div>  
+        </div>
+
+
+    </div>  
+  </div>
+</div> 
+</div>
+
+
